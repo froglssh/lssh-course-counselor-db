@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麗山高中 ── 課程諮詢教師資料庫</title>
+    <meta name="description" content="臺北市立麗山高級中學課程諮詢教師資源中心，涵蓋法規、手冊、教案、學習單、研究報告等完整資料庫。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+/* ═══════════════════════════════════════════════
+   CSS DESIGN SYSTEM — 麗山課諮資料庫
+   ═══════════════════════════════════════════════ */
+:root {
+    /* ── Color Palette ── */
+    --c-navy:       #0F1A2E;
+    --c-navy-mid:   #1B2A4A;
+    --c-indigo:     #3B82F6;
+    --c-indigo-dk:  #2563EB;
+    --c-sky:        #60A5FA;
+    --c-amber:      #F59E0B;
+    --c-amber-lt:   #FCD34D;
+    --c-emerald:    #10B981;
+    --c-rose:       #F43F5E;
+    --c-violet:     #8B5CF6;
+    --c-teal:       #14B8A6;
+    --c-orange:     #F97316;
+
+    --c-white:      #FAFBFD;
+    --c-gray-50:    #F8FAFC;
+    --c-gray-100:   #F1F5F9;
+    --c-gray-200:   #E2E8F0;
+    --c-gray-300:   #CBD5E1;
+    --c-gray-400:   #94A3B8;
+    --c-gray-500:   #64748B;
+    --c-gray-600:   #475569;
+    --c-gray-700:   #334155;
+    --c-gray-800:   #1E293B;
+
+    /* ── Gradients ── */
+    --grad-hero:    linear-gradient(135deg, #0F1A2E 0%, #1B2A4A 40%, #1E3A5F 100%);
+    --grad-card:    linear-gradient(145deg, rgba(255,255,255,0.95), rgba(248,250,252,0.9));
+    --grad-glow:    radial-gradient(ellipse at 30% 20%, rgba(59,130,246,0.12) 0%, transparent 60%);
+
+    /* ── Typography ── */
+    --font-display: 'Outfit', 'Noto Sans TC', sans-serif;
+    --font-body:    'Noto Sans TC', 'Outfit', sans-serif;
+
+    /* ── Spacing ── */
+    --space-xs:  0.25rem;
+    --space-sm:  0.5rem;
+    --space-md:  1rem;
+    --space-lg:  1.5rem;
+    --space-xl:  2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+
+    /* ── Radius ── */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* ── Shadows ── */
+    --shadow-sm:   0 1px 3px rgba(15,26,46,0.06), 0 1px 2px rgba(15,26,46,0.04);
+    --shadow-md:   0 4px 12px rgba(15,26,46,0.08), 0 2px 4px rgba(15,26,46,0.04);
+    --shadow-lg:   0 10px 30px rgba(15,26,46,0.10), 0 4px 8px rgba(15,26,46,0.06);
+    --shadow-xl:   0 20px 50px rgba(15,26,46,0.12), 0 8px 16px rgba(15,26,46,0.08);
+    --shadow-glow: 0 0 40px rgba(59,130,246,0.15);
+
+    /* ── Transitions ── */
+    --ease-out:  cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--c-gray-800);
+    background: var(--c-gray-50);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* ── Animated Background ── */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: var(--grad-glow);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════
+   HEADER / HERO
+   ═══════════════════════════════════════════════ */
+.hero {
+    position: relative;
+    background: var(--grad-hero);
+    padding: var(--space-3xl) var(--space-xl);
+    text-align: center;
+    overflow: hidden;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -30%;
+    width: 160%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(59,130,246,0.08) 0%, transparent 70%);
+    animation: heroGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(5%, -5%) scale(1.1); }
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, var(--c-gray-50), transparent);
+    pointer-events: none;
+}
+
+/* Decorative floating orbs */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.08;
+    filter: blur(40px);
+    pointer-events: none;
+}
+.orb-1 { width: 300px; height: 300px; background: var(--c-indigo); top: -60px; right: -40px; animation: float1 12s ease-in-out infinite; }
+.orb-2 { width: 200px; height: 200px; background: var(--c-amber); bottom: 20px; left: -30px; animation: float2 10s ease-in-out infinite; }
+.orb-3 { width: 150px; height: 150px; background: var(--c-emerald); top: 40%; left: 20%; animation: float3 14s ease-in-out infinite; }
+
+@keyframes float1 { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(-20px, 15px); } }
+@keyframes float2 { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(15px, -20px); } }
+@keyframes float3 { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(-10px, -15px); } }
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: rgba(59,130,246,0.15);
+    border: 1px solid rgba(59,130,246,0.25);
+    color: var(--c-sky);
+    padding: 6px 18px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: var(--space-lg);
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.5px;
+}
+
+.hero-badge .dot {
+    width: 8px; height: 8px;
+    background: var(--c-emerald);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.5px;
+}
+
+.hero h1 .accent {
+    background: linear-gradient(135deg, var(--c-amber), var(--c-amber-lt));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+}
+
+/* ── Stats Row ── */
+.stats-row {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.stat-item {
+    text-align: center;
+    color: white;
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--c-amber), var(--c-sky));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* ═══════════════════════════════════════════════
+   STICKY NAV
+   ═══════════════════════════════════════════════ */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,251,253,0.85);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border-bottom: 1px solid rgba(226,232,240,0.6);
+    padding: 0 var(--space-xl);
+    transition: box-shadow 0.3s ease;
+}
+
+.sticky-nav.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    min-height: 56px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.nav-inner::-webkit-scrollbar { display: none; }
+
+.nav-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--c-navy-mid);
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.nav-brand .brand-icon {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--c-indigo), var(--c-violet));
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2px;
+    list-style: none;
+    flex-shrink: 0;
+}
+
+.nav-links a {
+    display: block;
+    padding: 8px 14px;
+    color: var(--c-gray-500);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    transition: all 0.25s var(--ease-out);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--c-indigo);
+    background: rgba(59,130,246,0.08);
+}
+
+/* ── Search Bar (in nav) ── */
+.search-container {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.search-box {
+    position: relative;
+    width: 240px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 14px 8px 36px;
+    border: 1.5px solid var(--c-gray-200);
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--c-gray-800);
+    background: white;
+    transition: all 0.3s var(--ease-out);
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: var(--c-indigo);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+    width: 300px;
+}
+
+.search-box input::placeholder {
+    color: var(--c-gray-400);
+}
+
+.search-box .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--c-gray-400);
+    font-size: 0.85rem;
+    pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════
+   MAIN CONTENT
+   ═══════════════════════════════════════════════ */
+.main {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-xl);
+}
+
+/* ── Section Headers ── */
+.section-header {
+    margin-bottom: var(--space-2xl);
+}
+
+.section-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--c-navy-mid);
+    margin-bottom: var(--space-sm);
+}
+
+.section-header p {
+    color: var(--c-gray-500);
+    font-size: 0.95rem;
+}
+
+/* ═══════════════════════════════════════════════
+   CATEGORY CARDS GRID
+   ═══════════════════════════════════════════════ */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-3xl);
+}
+
+.category-card {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--c-gray-200);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s var(--ease-out);
+    animation: cardIn 0.6s var(--ease-out) both;
+}
+
+.category-card:nth-child(1) { animation-delay: 0.05s; }
+.category-card:nth-child(2) { animation-delay: 0.1s; }
+.category-card:nth-child(3) { animation-delay: 0.15s; }
+.category-card:nth-child(4) { animation-delay: 0.2s; }
+.category-card:nth-child(5) { animation-delay: 0.25s; }
+.category-card:nth-child(6) { animation-delay: 0.3s; }
+.category-card:nth-child(7) { animation-delay: 0.35s; }
+.category-card:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    transition: height 0.3s var(--ease-out);
+}
+
+.category-card:hover::before {
+    height: 5px;
+}
+
+/* Card color themes */
+.category-card[data-color="indigo"]::before  { background: linear-gradient(90deg, var(--c-indigo), var(--c-sky)); }
+.category-card[data-color="amber"]::before   { background: linear-gradient(90deg, var(--c-amber), var(--c-amber-lt)); }
+.category-card[data-color="emerald"]::before { background: linear-gradient(90deg, var(--c-emerald), #6EE7B7); }
+.category-card[data-color="rose"]::before    { background: linear-gradient(90deg, var(--c-rose), #FDA4AF); }
+.category-card[data-color="violet"]::before  { background: linear-gradient(90deg, var(--c-violet), #C4B5FD); }
+.category-card[data-color="teal"]::before    { background: linear-gradient(90deg, var(--c-teal), #5EEAD4); }
+.category-card[data-color="orange"]::before  { background: linear-gradient(90deg, var(--c-orange), #FDBA74); }
+.category-card[data-color="navy"]::before    { background: linear-gradient(90deg, var(--c-navy-mid), var(--c-indigo)); }
+
+.card-body {
+    padding: var(--space-lg);
+}
+
+.card-icon-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+}
+
+.card-icon {
+    width: 48px; height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.category-card[data-color="indigo"] .card-icon  { background: rgba(59,130,246,0.1); }
+.category-card[data-color="amber"] .card-icon   { background: rgba(245,158,11,0.1); }
+.category-card[data-color="emerald"] .card-icon { background: rgba(16,185,129,0.1); }
+.category-card[data-color="rose"] .card-icon    { background: rgba(244,63,94,0.1); }
+.category-card[data-color="violet"] .card-icon  { background: rgba(139,92,246,0.1); }
+.category-card[data-color="teal"] .card-icon    { background: rgba(20,184,166,0.1); }
+.category-card[data-color="orange"] .card-icon  { background: rgba(249,115,22,0.1); }
+.category-card[data-color="navy"] .card-icon    { background: rgba(27,42,74,0.1); }
+
+.card-file-count {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--c-gray-400);
+    background: var(--c-gray-100);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+}
+
+.card-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--c-navy-mid);
+    margin-bottom: var(--space-sm);
+    line-height: 1.4;
+}
+
+.card-desc {
+    font-size: 0.88rem;
+    color: var(--c-gray-500);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+}
+
+.card-tags {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    background: var(--c-gray-100);
+    color: var(--c-gray-600);
+    font-weight: 500;
+}
+
+.card-expand-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: 10px;
+    background: var(--c-gray-50);
+    border-top: 1px solid var(--c-gray-100);
+    font-size: 0.8rem;
+    color: var(--c-gray-400);
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.category-card:hover .card-expand-hint {
+    color: var(--c-indigo);
+    background: rgba(59,130,246,0.04);
+}
+
+.card-expand-hint .arrow {
+    transition: transform 0.3s var(--ease-out);
+}
+
+.category-card.expanded .card-expand-hint .arrow {
+    transform: rotate(180deg);
+}
+
+/* ═══════════════════════════════════════════════
+   EXPANDED FILE PANEL
+   ═══════════════════════════════════════════════ */
+.file-panel {
+    display: none;
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--c-gray-200);
+    margin-top: calc(-1 * var(--space-sm));
+    margin-bottom: var(--space-lg);
+    overflow: hidden;
+    animation: panelIn 0.4s var(--ease-out);
+    grid-column: 1 / -1;
+}
+
+.file-panel.show {
+    display: block;
+}
+
+@keyframes panelIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg) var(--space-xl);
+    border-bottom: 1px solid var(--c-gray-100);
+    background: var(--c-gray-50);
+}
+
+.panel-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--c-navy-mid);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.panel-close {
+    width: 36px; height: 36px;
+    border: none;
+    background: var(--c-gray-200);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--c-gray-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.panel-close:hover {
+    background: var(--c-gray-300);
+    color: var(--c-gray-800);
+}
+
+.panel-desc {
+    padding: var(--space-lg) var(--space-xl);
+    border-bottom: 1px solid var(--c-gray-100);
+}
+
+.panel-desc p {
+    font-size: 0.92rem;
+    color: var(--c-gray-600);
+    line-height: 1.8;
+}
+
+/* ── Subsection within panel ── */
+.file-subsection {
+    border-bottom: 1px solid var(--c-gray-100);
+}
+
+.file-subsection:last-child {
+    border-bottom: none;
+}
+
+.subsection-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-xl);
+    cursor: pointer;
+    transition: background 0.2s ease;
+    user-select: none;
+}
+
+.subsection-header:hover {
+    background: var(--c-gray-50);
+}
+
+.subsection-header .chevron {
+    font-size: 0.75rem;
+    color: var(--c-gray-400);
+    transition: transform 0.3s var(--ease-out);
+    flex-shrink: 0;
+}
+
+.subsection-header.open .chevron {
+    transform: rotate(90deg);
+}
+
+.subsection-header h4 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--c-gray-700);
+}
+
+.subsection-badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    background: var(--c-gray-100);
+    color: var(--c-gray-500);
+    font-weight: 500;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.file-list {
+    display: none;
+    padding: 0 var(--space-xl) var(--space-md);
+}
+
+.file-list.open {
+    display: block;
+}
+
+/* ── Individual File Item ── */
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.file-item:hover {
+    background: var(--c-gray-50);
+}
+
+.file-type-icon {
+    width: 36px; height: 36px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+}
+
+.file-type-icon.pdf  { background: linear-gradient(135deg, #EF4444, #DC2626); }
+.file-type-icon.docx { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+.file-type-icon.pptx { background: linear-gradient(135deg, #F97316, #EA580C); }
+.file-type-icon.html { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+.file-type-icon.mp3  { background: linear-gradient(135deg, #10B981, #059669); }
+.file-type-icon.mp4  { background: linear-gradient(135deg, #EC4899, #DB2777); }
+.file-type-icon.m4a  { background: linear-gradient(135deg, #14B8A6, #0D9488); }
+.file-type-icon.png  { background: linear-gradient(135deg, #06B6D4, #0891B2); }
+.file-type-icon.doc  { background: linear-gradient(135deg, #3B82F6, #1D4ED8); }
+
+.file-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.file-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--c-gray-700);
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.file-meta {
+    font-size: 0.75rem;
+    color: var(--c-gray-400);
+    margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════════
+   TIMELINE (Grade Navigation)
+   ═══════════════════════════════════════════════ */
+.timeline-section {
+    margin-top: var(--space-3xl);
+    margin-bottom: var(--space-3xl);
+}
+
+.timeline {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+    padding: var(--space-xl) 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--c-emerald), var(--c-indigo), var(--c-violet));
+    border-radius: 2px;
+    z-index: 0;
+}
+
+.timeline-item {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s var(--ease-out);
+}
+
+.timeline-item:hover {
+    transform: scale(1.05);
+}
+
+.timeline-dot {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-sm);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    box-shadow: var(--shadow-lg);
+}
+
+.timeline-item:nth-child(1) .timeline-dot { background: linear-gradient(135deg, var(--c-emerald), #6EE7B7); }
+.timeline-item:nth-child(2) .timeline-dot { background: linear-gradient(135deg, var(--c-indigo), var(--c-sky)); }
+.timeline-item:nth-child(3) .timeline-dot { background: linear-gradient(135deg, var(--c-violet), #C4B5FD); }
+
+.timeline-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--c-navy-mid);
+}
+
+.timeline-sublabel {
+    font-size: 0.8rem;
+    color: var(--c-gray-400);
+    margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════════
+   SEARCH RESULTS OVERLAY
+   ═══════════════════════════════════════════════ */
+.search-results {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    background: rgba(15,26,46,0.5);
+    backdrop-filter: blur(8px);
+    padding: var(--space-3xl) var(--space-xl);
+    overflow-y: auto;
+}
+
+.search-results.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.search-results-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+}
+
+.search-results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg) var(--space-xl);
+    border-bottom: 1px solid var(--c-gray-100);
+    background: var(--c-gray-50);
+}
+
+.search-results-header h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--c-navy-mid);
+}
+
+.search-results-body {
+    padding: var(--space-md) var(--space-xl);
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.search-no-result {
+    text-align: center;
+    padding: var(--space-2xl);
+    color: var(--c-gray-400);
+    font-size: 0.95rem;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.search-result-item:hover {
+    background: var(--c-gray-50);
+}
+
+.search-result-cat {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    background: var(--c-indigo);
+    color: white;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.search-result-name {
+    font-size: 0.88rem;
+    color: var(--c-gray-700);
+    font-weight: 500;
+}
+
+.search-result-name mark {
+    background: rgba(245,158,11,0.25);
+    color: inherit;
+    padding: 1px 2px;
+    border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════ */
+.footer {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-xl);
+    color: var(--c-gray-400);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--c-gray-200);
+    margin-top: var(--space-2xl);
+}
+
+.footer .heart {
+    color: var(--c-rose);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .hero { padding: var(--space-2xl) var(--space-md); min-height: 340px; }
+    .hero h1 { font-size: 1.8rem; }
+    .stats-row { gap: var(--space-lg); }
+    .stat-number { font-size: 1.6rem; }
+
+    .sticky-nav { padding: 0 var(--space-md); }
+    .nav-brand { display: none; }
+    .search-box input { width: 160px; }
+    .search-box input:focus { width: 200px; }
+
+    .main { padding: var(--space-lg) var(--space-md); }
+    .categories-grid { grid-template-columns: 1fr; }
+
+    .panel-header { padding: var(--space-md); }
+    .panel-desc { padding: var(--space-md); }
+    .subsection-header { padding: var(--space-sm) var(--space-md); }
+    .file-list { padding: 0 var(--space-md) var(--space-sm); }
+
+    .timeline::before { display: none; }
+    .timeline { flex-direction: column; align-items: center; }
+
+    .search-results { padding: var(--space-lg) var(--space-md); }
+}
+
+@media (max-width: 480px) {
+    .hero h1 { font-size: 1.5rem; }
+    .hero-subtitle { font-size: 0.9rem; }
+    .card-title { font-size: 1.05rem; }
+}
+
+/* ── Print styles ── */
+@media print {
+    .sticky-nav, .search-container, .card-expand-hint, .panel-close { display: none; }
+    .category-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .file-panel.show { display: block; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     HERO SECTION
+     ═══════════════════════════════════════════════ -->
+<header class="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            臺北市立麗山高級中學
+        </div>
+
+        <h1>課程諮詢教師<br><span class="accent">資源資料庫</span></h1>
+
+        <p class="hero-subtitle">
+            涵蓋法規制度、教學手冊、各年級教案教材、學習單、研究報告等完整資源，<br>
+            協助課諮師快速上手、精準服務每一位學生。
+        </p>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-number">8</div>
+                <div class="stat-label">資源分類</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">教學資源</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">年級覆蓋</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">班別分類</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════
+     STICKY NAVIGATION
+     ═══════════════════════════════════════════════ -->
+<nav class="sticky-nav" id="stickyNav">
+    <div class="nav-inner">
+        <div class="nav-brand">
+            <div class="brand-icon">📚</div>
+            課諮資料庫
+        </div>
+        <ul class="nav-links">
+            <li><a href="#categories">📋 總覽</a></li>
+            <li><a href="#timeline-section">📅 年級導航</a></li>
+            <li><a href="#cat-law">法規</a></li>
+            <li><a href="#cat-handbook">手冊</a></li>
+            <li><a href="#cat-portfolio">歷程</a></li>
+            <li><a href="#cat-g10">高一</a></li>
+            <li><a href="#cat-g11">高二</a></li>
+            <li><a href="#cat-g12">高三</a></li>
+            <li><a href="#cat-research">研究</a></li>
+            <li><a href="#cat-workbook">工作手冊</a></li>
+        </ul>
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="搜尋檔案名稱…" autocomplete="off">
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     MAIN CONTENT
+     ═══════════════════════════════════════════════ -->
+<main class="main">
+
+    <!-- ── Grade Timeline ── -->
+    <section class="timeline-section" id="timeline-section">
+        <div class="section-header">
+            <h2>📅 年級諮詢導航</h2>
+            <p>從高一到高三，課程諮詢教師在每個階段都有不同的重點任務</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item" onclick="scrollToCategory('cat-g10')">
+                <div class="timeline-dot">高一</div>
+                <div class="timeline-label">認識學習歷程</div>
+                <div class="timeline-sublabel">選組選課指引</div>
+            </div>
+            <div class="timeline-item" onclick="scrollToCategory('cat-g11')">
+                <div class="timeline-dot">高二</div>
+                <div class="timeline-label">多元表現累積</div>
+                <div class="timeline-sublabel">課程學習成果</div>
+            </div>
+            <div class="timeline-item" onclick="scrollToCategory('cat-g12')">
+                <div class="timeline-dot">高三</div>
+                <div class="timeline-label">升學申請輔導</div>
+                <div class="timeline-sublabel">書審與志願選填</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Categories Grid ── -->
+    <section id="categories">
+        <div class="section-header">
+            <h2>📂 資源分類總覽</h2>
+            <p>點擊任一分類卡片即可展開查看該類別的完整檔案清單</p>
+        </div>
+
+        <div class="categories-grid" id="categoriesGrid">
+            <!-- Cards will be injected by JavaScript -->
+        </div>
+    </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════
+     SEARCH RESULTS OVERLAY
+     ═══════════════════════════════════════════════ -->
+<div class="search-results" id="searchResults">
+    <div class="search-results-inner">
+        <div class="search-results-header">
+            <h3>🔍 搜尋結果</h3>
+            <button class="panel-close" onclick="closeSearch()">✕</button>
+        </div>
+        <div class="search-results-body" id="searchResultsBody"></div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════ -->
+<footer class="footer">
+    <p>臺北市立麗山高級中學 ── 課程諮詢教師資源資料庫</p>
+    <p style="margin-top:4px;">以 <span class="heart">♥</span> 打造，讓每位課諮師都能安心上路</p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════ -->
+<script>
+/* ──────────────────────────────────────────────
+   DATA MODEL — All 8 categories + files
+   ────────────────────────────────────────────── */
+const CATEGORIES = [
+    {
+        id: 'cat-law',
+        icon: '📋',
+        color: 'indigo',
+        title: '法規與制度',
+        desc: '課程諮詢教師的法源依據、遴選要點與制度介紹。新任課諮師應優先閱讀此區，了解自身角色定位與法定職責。包含課諮師簡介、遴選委員會設置要點，以及課諮師制度的深入研究報告。',
+        tags: ['法規', '遴選', '制度研究'],
+        subsections: [
+            {
+                title: '制度介紹與簡介',
+                files: [
+                    { name: '課程諮詢教師簡介_114.pdf', type: 'pdf', size: '280 KB' },
+                    { name: '課程諮詢教師簡介_114.docx', type: 'docx', size: '435 KB' },
+                    { name: '台灣高中課程諮詢教師介紹.pdf', type: 'pdf', size: '795 KB' },
+                ]
+            },
+            {
+                title: '遴選辦法與要點',
+                files: [
+                    { name: '臺北市立麗山高級中學課程諮詢教師遴選委員會設置要點 2018.pdf', type: 'pdf', size: '128 KB' },
+                    { name: '臺北市立麗山高級中學課程諮詢教師遴選委員會設置要點 2018.doc', type: 'doc', size: '45 KB' },
+                ]
+            },
+            {
+                title: '制度深入研究',
+                files: [
+                    { name: '台灣高中課程諮詢教師制度之深入研究.html', type: 'html', size: '30 KB' },
+                    { name: '台灣高中課程諮詢教師制度之深入研究(網頁).pdf', type: 'pdf', size: '1.9 MB' },
+                    { name: '台灣高中課程諮詢教師深入研究_gemini.pdf', type: 'pdf', size: '302 KB' },
+                    { name: '台灣高中課程諮詢教師深入研究_gemini.docx', type: 'docx', size: '36 KB' },
+                ]
+            }
+        ]
+    },
+    {
+        id: 'cat-handbook',
+        icon: '📘',
+        color: 'amber',
+        title: '課諮手冊',
+        desc: '依照普通班、資優班、體育班三種班別，提供各學年度的課程諮詢手冊。手冊內容涵蓋課程地圖、選課規劃、學習歷程檔案說明等，是入班團體諮詢時的核心參考資料。另附多元入學手冊供升學諮詢使用。',
+        tags: ['普通班', '資優班', '體育班', '多元入學'],
+        subsections: [
+            {
+                title: '114 學年度手冊',
+                files: [
+                    { name: '普通班課諮手冊114學年.pdf', type: 'pdf', size: '1.1 MB' },
+                    { name: '資優班課諮手冊114學年.pdf', type: 'pdf', size: '1.1 MB' },
+                    { name: '體育班課諮手冊114學年.pdf', type: 'pdf', size: '1.2 MB' },
+                ]
+            },
+            {
+                title: '113 學年度手冊',
+                files: [
+                    { name: '普通班課諮手冊113學年.pdf', type: 'pdf', size: '9.6 MB' },
+                    { name: '資優班課諮手冊113學年.pdf', type: 'pdf', size: '12.4 MB' },
+                    { name: '體育班課諮手冊113學年.pdf', type: 'pdf', size: '12 MB' },
+                ]
+            },
+            {
+                title: '書面版（無年度版）',
+                files: [
+                    { name: '普通班課諮手冊.pdf', type: 'pdf', size: '6.1 MB' },
+                    { name: '資優班課諮手冊.pdf', type: 'pdf', size: '7.1 MB' },
+                    { name: '體育班課諮手冊.pdf', type: 'pdf', size: '7.8 MB' },
+                ]
+            },
+            {
+                title: '多元入學手冊',
+                files: [
+                    { name: '115學年度多元入學手冊-定稿版.pdf', type: 'pdf', size: '13.6 MB' },
+                ]
+            }
+        ]
+    },
+    {
+        id: 'cat-portfolio',
+        icon: '📖',
+        color: 'emerald',
+        title: '學習歷程導讀教材',
+        desc: '學習歷程檔案入班導讀的核心教材，分為兩大主題：「課程學習成果呈現指南」協助學生了解如何製作優質的課程學習成果，「大學入學申請第二階段準備指南」則引導學生準備面試與書審資料。每份指南均附有 AI 分析報告與互動版 PDF。',
+        tags: ['學習歷程', '課程學習成果', '大學申請', '導讀'],
+        subsections: [
+            {
+                title: '課程學習成果呈現指南',
+                files: [
+                    { name: '學習歷程-課程學習成果呈現指南-互動版.pdf', type: 'pdf', size: '54 MB' },
+                    { name: '學習歷程-課程學習成果呈現指南-導讀公版簡報.pdf', type: 'pdf', size: '5.8 MB' },
+                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單.pdf', type: 'pdf', size: '233 KB' },
+                    { name: '1學習歷程檔案解讀與分析_gemini.pdf', type: 'pdf', size: '218 KB' },
+                    { name: '2學習歷程-課程學習成果呈現指南（互動版）_ChatGPT.pdf', type: 'pdf', size: '210 KB' },
+                ]
+            },
+            {
+                title: '大學入學申請第二階段準備指南',
+                files: [
+                    { name: '學習歷程-大學入學申請第二階段準備指南-互動版0314.pdf', type: 'pdf', size: '35.4 MB' },
+                    { name: '學習歷程-大學入學申請第二階段準備指南深入研究_Gemini.pdf', type: 'pdf', size: '537 KB' },
+                    { name: '學習歷程-大學入學申請第二階段準備指南深入研究_Gemini.docx', type: 'docx', size: '28 KB' },
+                ]
+            }
+        ]
+    },
+    {
+        id: 'cat-g10',
+        icon: '🟢',
+        color: 'teal',
+        title: '高一課程諮詢',
+        desc: '高一階段的課程諮詢著重於「認識學習歷程檔案」與「選組選課指引」。上學期第一次入班導讀學習歷程檔案手冊，第二次引導學生認識課程地圖與專題選課。下學期則進行選組選課說明，依普通班、資優班、體育班提供差異化的選課指南。每次諮詢均備有完整教案、簡報、學習單（含教師版與學生版）。',
+        tags: ['學習歷程', '課程地圖', '選組選課', '教案', '學習單'],
+        subsections: [
+            {
+                title: '上學期第一次：學習歷程檔案導讀',
+                files: [
+                    { name: '高一學習歷程檔案：課程學習成果呈現指南教學教案.pdf', type: 'pdf', size: '360 KB' },
+                    { name: '高一學習歷程檔案：課程學習成果呈現指南教學教案.docx', type: 'docx', size: '2.9 MB' },
+                    { name: '高一學習歷程檔案：課程學習成果呈現指南教學教案(網頁).html', type: 'html', size: '39 KB' },
+                    { name: '11410925高一團體課程諮詢活動流程.pdf', type: 'pdf', size: '190 KB' },
+                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單(學生版).pdf', type: 'pdf', size: '131 KB' },
+                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單(教師版).pdf', type: 'pdf', size: '165 KB' },
+                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單(解答).pdf', type: 'pdf', size: '148 KB' },
+                    { name: '學習歷程檔案簡介.pptx', type: 'pptx', size: '8.3 MB' },
+                    { name: '學習歷程檔案簡介.pdf', type: 'pdf', size: '1.4 MB' },
+                    { name: '學習歷程懶人包.pdf', type: 'pdf', size: '3.3 MB' },
+                    { name: '課程成果指南＿LM簡報.pdf', type: 'pdf', size: '1.8 MB' },
+                    { name: '大學教授想看什麼？拆解學習歷程「三重二不」與成果加值五要素.mp3', type: 'mp3', size: '5.5 MB' },
+                ]
+            },
+            {
+                title: '上學期第二次：課程地圖與專題選課',
+                files: [
+                    { name: '高一課程地圖與專題選課教學教案.pdf', type: 'pdf', size: '255 KB' },
+                    { name: '高一課程地圖與專題選課教學教案.docx', type: 'docx', size: '2.7 MB' },
+                    { name: '高一課程地圖與專題選課教學教案（網頁）.html', type: 'html', size: '23 KB' },
+                ]
+            },
+            {
+                title: '下學期：選組選課說明（不分班別共用）',
+                files: [
+                    { name: '114-2 高一團體課諮-選組選課說明.pptx', type: 'pptx', size: '4.2 MB' },
+                    { name: '114-2 高一團體課諮-選組選課說明.pdf', type: 'pdf', size: '2.3 MB' },
+                    { name: '高一下-團體課程諮詢學習單-2025（學生版）.pdf', type: 'pdf', size: '303 KB' },
+                    { name: '高一下-團體課程諮詢學習單-2025（教師版）.pdf', type: 'pdf', size: '349 KB' },
+                    { name: '115高一升高二選課調查表0421.pdf', type: 'pdf', size: '181 KB' },
+                    { name: '麗山高中選組選課AI LM 簡報.pdf', type: 'pdf', size: '2.2 MB' },
+                    { name: '麗山高二選組選課LM簡報.pdf', type: 'pdf', size: '1.4 MB' },
+                    { name: '生涯設計_麗山選課全攻略＿LM簡報.pdf', type: 'pdf', size: '2.4 MB' },
+                    { name: '選擇你的路：高中生選組全攻略.mp4', type: 'mp4', size: '45.6 MB' },
+                    { name: '選組策略與數A數B.m4a', type: 'm4a', size: '37.2 MB' },
+                    { name: '麗山高中升高二選組選課分析.pdf', type: 'pdf', size: '321 KB' },
+                    { name: '麗山高中高一升高二選組選課策略全攻略.pdf', type: 'pdf', size: '482 KB' },
+                ]
+            },
+            {
+                title: '下學期：普通班選課指南',
+                files: [
+                    { name: '麗山高中升高二選課指南＿普通班.pdf', type: 'pdf', size: '199 KB' },
+                    { name: '麗山高中升高二選課指南＿普通班.docx', type: 'docx', size: '2.5 MB' },
+                    { name: '麗山高中升高二選課指南＿普通班 ＿簡報.pdf', type: 'pdf', size: '2.7 MB' },
+                ]
+            },
+            {
+                title: '下學期：資優班選課指南',
+                files: [
+                    { name: '麗山高中升高二選課指南＿資優班.pdf', type: 'pdf', size: '267 KB' },
+                    { name: '麗山高中升高二選課指南＿資優班.docx', type: 'docx', size: '3 MB' },
+                    { name: '麗山高中升高二選課指南＿資優班 ＿簡報.pdf', type: 'pdf', size: '1.8 MB' },
+                    { name: '資優班選組選課.pdf', type: 'pdf', size: '364 KB' },
+                ]
+            },
+            {
+                title: '下學期：體育班選課指南',
+                files: [
+                    { name: '麗山高中升高二選課指南＿體育班.pdf', type: 'pdf', size: '197 KB' },
+                    { name: '麗山高中升高二選課指南＿體育班.docx', type: 'docx', size: '2.5 MB' },
+                    { name: '麗山高中升高二選課指南＿體育班 ＿簡報.pdf', type: 'pdf', size: '3.2 MB' },
+                ]
+            }
+        ]
+    },
+    {
+        id: 'cat-g11',
+        icon: '🔵',
+        color: 'violet',
+        title: '高二課程諮詢',
+        desc: '高二是學習歷程檔案累積的關鍵年級。上學期聚焦「多元表現」的深度解析與成果累積策略，包含八選四規則、自主學習計畫等。下學期指導學生產出高品質的「課程學習成果」並進行多元選修課程諮詢。另有「二升三選組選課」說明，協助學生為高三做準備。',
+        tags: ['多元表現', '課程學習成果', '二升三選組', '教案', '學習單'],
+        subsections: [
+            {
+                title: '上學期：多元表現深度解析',
+                files: [
+                    { name: '高二學習歷程檔案：多元表現深度解析 教學教案.pdf', type: 'pdf', size: '443 KB' },
+                    { name: '高二學習歷程檔案：多元表現深度解析 教學教案.docx', type: 'docx', size: '3.4 MB' },
+                    { name: '高二學習歷程檔案：多元表現深度解析 教學教案（網頁）.html', type: 'html', size: '26 KB' },
+                    { name: '高二團體課諮之多元表現.pptx', type: 'pptx', size: '36.8 MB' },
+                    { name: '高二團體課諮之多元表現.pdf', type: 'pdf', size: '5.4 MB' },
+                    { name: '11410926高二團體課程諮詢活動流程.pdf', type: 'pdf', size: '233 KB' },
+                    { name: '(最新)高二學習歷程檔案之多元表現學習單2025.9.19版(學生版).pdf', type: 'pdf', size: '194 KB' },
+                    { name: '(最新)高二學習歷程檔案之多元表現學習單2025.9.19版(教師版).pdf', type: 'pdf', size: '312 KB' },
+                    { name: '(最新)高二學習歷程檔案之多元表現學習單2025.9.19版(解答).pdf', type: 'pdf', size: '162 KB' },
+                    { name: '多元表現升學完全攻略_LM簡報.pdf', type: 'pdf', size: '1.7 MB' },
+                    { name: '高二生必懂的學習歷程「多元表現」全攻略（學生公告板）.pdf', type: 'pdf', size: '224 KB' },
+                    { name: '破解多元表現八選四！高二必看學習歷程「雙十限制」與88%必備的自主學習策略大公開.mp3', type: 'mp3', size: '4.6 MB' },
+                ]
+            },
+            {
+                title: '下學期：課程學習成果諮詢',
+                files: [
+                    { name: '高二下課程學習成果諮詢簡報.pptx', type: 'pptx', size: '17 MB' },
+                    { name: '高二下課程學習成果諮詢簡報.pdf', type: 'pdf', size: '6.5 MB' },
+                    { name: '學習歷程檔案精進手冊是非題(學生版)_115.pdf', type: 'pdf', size: '173 KB' },
+                    { name: '學習歷程檔案精進手冊是非題(教師版).pdf', type: 'pdf', size: '275 KB' },
+                    { name: '學習歷程檔案精進手冊是非題(教師版)_簡報.pdf', type: 'pdf', size: '1.4 MB' },
+                    { name: '臺北大學高中學習歷程檔案精進手冊.pdf', type: 'pdf', size: '4.6 MB' },
+                    { name: '臺北大學高中學習歷程檔案精進手冊_LM簡報.pdf', type: 'pdf', size: '2.6 MB' },
+                    { name: '高二下課程學習成果＿LM簡報1.pdf', type: 'pdf', size: '2.4 MB' },
+                    { name: '高二下課程學習成果＿LM簡報2.pdf', type: 'pdf', size: '2.3 MB' },
+                ]
+            },
+            {
+                title: '二升三選組選課',
+                files: [
+                    { name: '115高二升高三選課說明0421.pdf', type: 'pdf', size: '' },
+                    { name: '115高二升高三選課說明0421.docx', type: 'docx', size: '' },
+                    { name: '115高二升高三選課調查表0421.pdf', type: 'pdf', size: '' },
+                    { name: '115高二升高三選課調查表0421.doc', type: 'doc', size: '' },
+                    { name: '麗山高三選組選課LM簡報.pdf', type: 'pdf', size: '1.8 MB' },
+                ]
+            },
+            {
+                title: '歷屆參考資料',
+                files: [
+                    { name: '一起重返18歲 學習歷程檔案分享.pdf', type: 'pdf', size: '7.5 MB' },
+                    { name: '最後課程學習成果可當範例.pdf', type: 'pdf', size: '16.9 MB' },
+                    { name: '美化版3.7高二學校日課程諮詢說明簡報.pptx', type: 'pptx', size: '9.7 MB' },
+                ]
+            }
+        ]
+    },
+    {
+        id: 'cat-g12',
+        icon: '🟣',
+        color: 'rose',
+        title: '高三課程諮詢',
+        desc: '高三課程諮詢緊扣升學需求，上學期以「認識申請入學簡章」為主題，帶領學生解讀簡章、進行落點分析；下學期在個人申請階段提供書審資料準備指導與志願選填諮詢服務。提供完整的教案、簡報、學習單、講稿及攻略圖。',
+        tags: ['申請入學', '落點分析', '書審資料', '志願選填'],
+        subsections: [
+            {
+                title: '上學期：認識申請入學簡章',
+                files: [
+                    { name: '1141高三團體課諮之申請入學簡章（簡報）.pptx', type: 'pptx', size: '15.6 MB' },
+                    { name: '1141高三團體課諮之申請入學簡章（簡報）.pdf', type: 'pdf', size: '5.9 MB' },
+                    { name: '1141128高三團體課程諮詢活動流程.pdf', type: 'pdf', size: '181 KB' },
+                    { name: '1141128高三團體課程諮詢活動流程.docx', type: 'docx', size: '3.3 MB' },
+                    { name: '1141高三認識申請入學簡章學習單_chao.pdf', type: 'pdf', size: '285 KB' },
+                    { name: '1141高三認識申請入學簡章學習單＿光電科學與工程學範例.pdf', type: 'pdf', size: '390 KB' },
+                    { name: '115年申請入學簡章（簡報）教師講稿.pdf', type: 'pdf', size: '200 KB' },
+                    { name: '115年申請入學簡章（簡報）教師講稿.docx', type: 'docx', size: '6 MB' },
+                    { name: '大學申請入學深度解析簡報_LM.pdf', type: 'pdf', size: '14.8 MB' },
+                    { name: '大學申請入學落點分析表.pdf', type: 'pdf', size: '211 KB' },
+                    { name: '大學申請入學落點分析表.docx', type: 'docx', size: '37 KB' },
+                    { name: '115學年度大學入學採計科目公告.pdf', type: 'pdf', size: '199 KB' },
+                ]
+            },
+            {
+                title: '下學期：書審資料準備與志願選填',
+                files: [
+                    { name: '115高三選填志願輔導與諮詢簡報.pptx', type: 'pptx', size: '47.6 MB' },
+                    { name: '115高三選填志願輔導與諮詢簡報.pdf', type: 'pdf', size: '7.4 MB' },
+                    { name: '2026.115個人申請可運用資源說明.pdf', type: 'pdf', size: '9.6 MB' },
+                    { name: '115年個人申請志願填寫系統.html', type: 'html', size: '75 KB' },
+                ]
+            }
+        ]
+    },
+    {
+        id: 'cat-research',
+        icon: '🔬',
+        color: 'orange',
+        title: '課程諮詢教師研究',
+        desc: '收錄課諮師制度的學術與實務研究成果，包含由 AI 工具（Gemini、ChatGPT）協助產出的制度分析報告、課諮師任務與職責的系統性研究、召集人工作手冊，以及 Podcast 風格的音檔說明。適合想深入了解課諮師角色與專業發展的教師閱讀。',
+        tags: ['研究報告', '制度分析', '職責', 'AI 輔助', 'Podcast'],
+        subsections: [
+            {
+                title: '制度研究報告',
+                files: [
+                    { name: '台灣高中課程諮詢教師研究_gemini.pdf', type: 'pdf', size: '314 KB' },
+                    { name: '台灣高中課程諮詢教師研究_gemini.docx', type: 'docx', size: '2.8 MB' },
+                    { name: '台灣高中課程諮詢教師研究_gemini（網頁）.html', type: 'html', size: '46 KB' },
+                    { name: '臺灣高中課程諮詢教師研究報告＿ChatGPT.pdf', type: 'pdf', size: '585 KB' },
+                    { name: '臺灣高中課程諮詢教師研究報告＿ChatGPT.docx', type: 'docx', size: '28 KB' },
+                    { name: '臺灣高中課程諮詢教師研究報告（網頁）.html', type: 'html', size: '19 KB' },
+                    { name: '臺灣高中課程諮詢教師研究報告＿網頁介紹.pdf', type: 'pdf', size: '4.8 MB' },
+                ]
+            },
+            {
+                title: '任務與職責',
+                files: [
+                    { name: '台灣高中課程諮詢召集人的工作 任務 職責.pdf', type: 'pdf', size: '790 KB' },
+                    { name: '課諮師任務與職責＿LM簡報.pdf', type: 'pdf', size: '2.7 MB' },
+                    { name: '課諮師制度分析_LM筆記簡報.pdf', type: 'pdf', size: '3.2 MB' },
+                    { name: '課諮師制度分析_LM簡報.pdf', type: 'pdf', size: '1.9 MB' },
+                ]
+            },
+            {
+                title: 'Podcast 音檔',
+                files: [
+                    { name: '108課綱新角色：高中課程諮詢教師，理想與現實的「鐵三角」挑戰！.mp3', type: 'mp3', size: '3.8 MB' },
+                    { name: '【108課綱升級版】高中課諮師怎麼幫你「策展」學習路徑？打造會說故事的學習歷程檔案！.mp3', type: 'mp3', size: '3.4 MB' },
+                ]
+            }
+        ]
+    },
+    {
+        id: 'cat-workbook',
+        icon: '🗺️',
+        color: 'navy',
+        title: '課諮工作手冊與地圖',
+        desc: '臺北市教育局編製的「課程諮詢工作手冊」完整版，搭配視覺化的「課程諮詢地圖」，清楚呈現課諮師在每學期的工作時程、諮詢項目與操作流程。另附 AI 輔助產出的導讀簡報與影音資料，是新手課諮師掌握全年工作節奏的最佳起點。',
+        tags: ['工作手冊', '課程地圖', '工作時程', 'AI 導讀'],
+        subsections: [
+            {
+                title: '臺北市課程諮詢工作手冊',
+                files: [
+                    { name: '臺北市課程諮詢工作手冊.pdf', type: 'pdf', size: '4.1 MB' },
+                    { name: '台北市課程諮詢手冊導讀簡報.pdf', type: 'pdf', size: '8.5 MB' },
+                ]
+            },
+            {
+                title: '課程諮詢地圖',
+                files: [
+                    { name: '課程諮詢地圖.png', type: 'png', size: '5 MB' },
+                    { name: '課程諮詢地圖2.png', type: 'png', size: '4.3 MB' },
+                    { name: '課程諮詢地圖_LM簡報.pdf', type: 'pdf', size: '2.9 MB' },
+                ]
+            },
+            {
+                title: 'AI 輔助資料',
+                files: [
+                    { name: 'Course_Consulting_Navigator_Blueprint.pdf', type: 'pdf', size: '16.6 MB' },
+                    { name: '高中課諮領航藍圖.pdf', type: 'pdf', size: '14.7 MB' },
+                    { name: '108課綱選課生存攻略.m4a', type: 'm4a', size: '41.7 MB' },
+                    { name: '你的高中藍圖：用課程諮詢導航你的未來.mp4', type: 'mp4', size: '30.8 MB' },
+                ]
+            }
+        ]
+    }
+];
+
+/* ──────────────────────────────────────────────
+   RENDER FUNCTIONS
+   ────────────────────────────────────────────── */
+function getTotalFiles(cat) {
+    return cat.subsections.reduce((sum, s) => sum + s.files.length, 0);
+}
+
+function renderCategories() {
+    const grid = document.getElementById('categoriesGrid');
+    let html = '';
+
+    CATEGORIES.forEach(cat => {
+        const fileCount = getTotalFiles(cat);
+        html += `
+        <div class="category-card" data-color="${cat.color}" data-id="${cat.id}" id="${cat.id}" onclick="togglePanel('${cat.id}')">
+            <div class="card-body">
+                <div class="card-icon-row">
+                    <div class="card-icon">${cat.icon}</div>
+                    <div class="card-file-count">${fileCount} 個檔案</div>
+                </div>
+                <div class="card-title">${cat.title}</div>
+                <div class="card-desc">${cat.desc}</div>
+                <div class="card-tags">${cat.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+            </div>
+            <div class="card-expand-hint">
+                <span>點擊展開檔案清單</span>
+                <span class="arrow">▼</span>
+            </div>
+        </div>
+        <div class="file-panel" id="panel-${cat.id}">
+            <div class="panel-header">
+                <h3>${cat.icon} ${cat.title}</h3>
+                <button class="panel-close" onclick="event.stopPropagation(); closePanel('${cat.id}')">✕</button>
+            </div>
+            <div class="panel-desc">
+                <p>${cat.desc}</p>
+            </div>
+            ${cat.subsections.map((sub, si) => `
+                <div class="file-subsection">
+                    <div class="subsection-header${si === 0 ? ' open' : ''}" onclick="event.stopPropagation(); toggleSubsection(this)">
+                        <span class="chevron">▶</span>
+                        <h4>${sub.title}</h4>
+                        <span class="subsection-badge">${sub.files.length} 個</span>
+                    </div>
+                    <div class="file-list${si === 0 ? ' open' : ''}">
+                        ${sub.files.map(f => `
+                            <div class="file-item">
+                                <div class="file-type-icon ${f.type}">${f.type}</div>
+                                <div class="file-info">
+                                    <div class="file-name">${f.name}</div>
+                                    ${f.size ? `<div class="file-meta">${f.size}</div>` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('')}
+        </div>`;
+    });
+
+    grid.innerHTML = html;
+}
+
+/* ──────────────────────────────────────────────
+   INTERACTION HANDLERS
+   ────────────────────────────────────────────── */
+let activePanel = null;
+
+function togglePanel(catId) {
+    const card = document.getElementById(catId);
+    const panel = document.getElementById('panel-' + catId);
+
+    if (activePanel && activePanel !== catId) {
+        const prevCard = document.getElementById(activePanel);
+        const prevPanel = document.getElementById('panel-' + activePanel);
+        prevCard.classList.remove('expanded');
+        prevPanel.classList.remove('show');
+    }
+
+    if (activePanel === catId) {
+        card.classList.remove('expanded');
+        panel.classList.remove('show');
+        activePanel = null;
+    } else {
+        card.classList.add('expanded');
+        panel.classList.add('show');
+        activePanel = catId;
+        // Scroll into view with offset
+        setTimeout(() => {
+            panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    }
+}
+
+function closePanel(catId) {
+    const card = document.getElementById(catId);
+    const panel = document.getElementById('panel-' + catId);
+    card.classList.remove('expanded');
+    panel.classList.remove('show');
+    activePanel = null;
+}
+
+function toggleSubsection(header) {
+    header.classList.toggle('open');
+    const fileList = header.nextElementSibling;
+    fileList.classList.toggle('open');
+}
+
+function scrollToCategory(catId) {
+    const el = document.getElementById(catId);
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Flash effect
+        el.style.boxShadow = '0 0 0 3px var(--c-indigo), var(--shadow-lg)';
+        setTimeout(() => { el.style.boxShadow = ''; }, 1500);
+    }
+}
+
+/* ──────────────────────────────────────────────
+   SEARCH
+   ────────────────────────────────────────────── */
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const searchResultsBody = document.getElementById('searchResultsBody');
+let searchTimeout = null;
+
+searchInput.addEventListener('input', function() {
+    clearTimeout(searchTimeout);
+    const query = this.value.trim();
+    if (query.length < 2) {
+        closeSearch();
+        return;
+    }
+    searchTimeout = setTimeout(() => performSearch(query), 200);
+});
+
+searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        this.value = '';
+        closeSearch();
+    }
+});
+
+function performSearch(query) {
+    const results = [];
+    const lowerQuery = query.toLowerCase();
+
+    CATEGORIES.forEach(cat => {
+        cat.subsections.forEach(sub => {
+            sub.files.forEach(f => {
+                if (f.name.toLowerCase().includes(lowerQuery)) {
+                    results.push({
+                        catTitle: cat.title,
+                        catIcon: cat.icon,
+                        catId: cat.id,
+                        fileName: f.name,
+                        fileType: f.type,
+                        subsection: sub.title
+                    });
+                }
+            });
+        });
+    });
+
+    renderSearchResults(results, query);
+}
+
+function renderSearchResults(results, query) {
+    if (results.length === 0) {
+        searchResultsBody.innerHTML = `<div class="search-no-result">找不到符合「${escapeHtml(query)}」的檔案</div>`;
+    } else {
+        searchResultsBody.innerHTML = results.map(r => {
+            const highlighted = highlightMatch(r.fileName, query);
+            return `
+                <div class="search-result-item" onclick="closeSearch(); scrollToCategory('${r.catId}'); togglePanel('${r.catId}');">
+                    <div class="file-type-icon ${r.fileType}" style="width:30px;height:30px;font-size:0.6rem;">${r.fileType}</div>
+                    <div style="flex:1;min-width:0;">
+                        <div class="search-result-name">${highlighted}</div>
+                        <div style="font-size:0.75rem;color:var(--c-gray-400);margin-top:2px;">${r.catIcon} ${r.catTitle} › ${r.subsection}</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+    searchResults.classList.add('show');
+}
+
+function highlightMatch(text, query) {
+    const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+    return escapeHtml(text).replace(regex, '<mark>$1</mark>');
+}
+
+function closeSearch() {
+    searchResults.classList.remove('show');
+}
+
+// Close search on click outside
+searchResults.addEventListener('click', function(e) {
+    if (e.target === this) closeSearch();
+});
+
+// Keyboard shortcut: Cmd+K or Ctrl+K to focus search
+document.addEventListener('keydown', function(e) {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        searchInput.focus();
+    }
+    if (e.key === 'Escape') {
+        closeSearch();
+    }
+});
+
+/* ──────────────────────────────────────────────
+   STICKY NAV SHADOW
+   ────────────────────────────────────────────── */
+const stickyNav = document.getElementById('stickyNav');
+window.addEventListener('scroll', () => {
+    stickyNav.classList.toggle('scrolled', window.scrollY > 100);
+});
+
+/* ──────────────────────────────────────────────
+   UTILITIES
+   ────────────────────────────────────────────── */
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+function escapeRegExp(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/* ──────────────────────────────────────────────
+   INIT
+   ────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', renderCategories);
+</script>
+
+</body>
+</html>

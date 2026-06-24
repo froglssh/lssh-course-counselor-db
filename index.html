@@ -533,7 +533,7 @@ body::after {
 .main {
     position: relative;
     z-index: 5;
-    max-width: 1200px;
+    max-width: 1350px;
     margin: 0 auto;
     padding: var(--space-2xl) var(--space-lg);
 }
@@ -567,7 +567,7 @@ body::after {
    ═══════════════════════════════════════════════ */
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-md);
     margin-bottom: var(--space-2xl);
 }
@@ -1188,8 +1188,8 @@ body::after {
     .quick-links { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 }
 
-@media (max-width: 900px) {
-    .categories-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); }
+@media (max-width: 1024px) {
+    .categories-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
 }
 
 @media (max-width: 768px) {

@@ -1000,6 +1000,40 @@ body::before {
     .category-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
     .file-panel.show { display: block; }
 }
+
+/* ── Drive Link Styles ── */
+.file-item[href] {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.file-item[href]:hover {
+    background: rgba(59,130,246,0.06);
+    border-left: 3px solid var(--c-indigo);
+    padding-left: 11px;
+}
+
+.drive-link {
+    color: var(--c-indigo);
+    font-weight: 500;
+}
+
+.file-open-icon {
+    font-size: 1rem;
+    color: var(--c-gray-300);
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.file-item[href]:hover .file-open-icon {
+    color: var(--c-indigo);
+    transform: translate(2px, -2px);
+}
+
+.file-item[href]:hover .file-name {
+    color: var(--c-indigo);
+}
     </style>
 </head>
 <body>
@@ -1160,25 +1194,25 @@ const CATEGORIES = [
             {
                 title: '制度介紹與簡介',
                 files: [
-                    { name: '課程諮詢教師簡介_114.pdf', type: 'pdf', size: '280 KB' },
-                    { name: '課程諮詢教師簡介_114.docx', type: 'docx', size: '435 KB' },
-                    { name: '台灣高中課程諮詢教師介紹.pdf', type: 'pdf', size: '795 KB' },
+                    { name: '課程諮詢教師簡介_114.pdf', type: 'pdf', size: '280 KB', driveId: '1dcNMfHmF1CH-7iSGUwCCGyN0Yj9ToVWp' },
+                    { name: '課程諮詢教師簡介_114.docx', type: 'docx', size: '435 KB', driveId: '18SeW6za3cl0yK8VjBSccC6bJZopu0RNJ' },
+                    { name: '台灣高中課程諮詢教師介紹.pdf', type: 'pdf', size: '795 KB', driveId: '1Q7uxJ0UfACZqf3DQC5j-qsXDTRpLcPQl' },
                 ]
             },
             {
                 title: '遴選辦法與要點',
                 files: [
-                    { name: '臺北市立麗山高級中學課程諮詢教師遴選委員會設置要點 2018.pdf', type: 'pdf', size: '128 KB' },
-                    { name: '臺北市立麗山高級中學課程諮詢教師遴選委員會設置要點 2018.doc', type: 'doc', size: '45 KB' },
+                    { name: '臺北市立麗山高級中學課程諮詢教師遴選委員會設置要點 2018.pdf', type: 'pdf', size: '128 KB', driveId: '1YbPjqPK6VJiFKr1jMZBB074u2GSDzMBE' },
+                    { name: '臺北市立麗山高級中學課程諮詢教師遴選委員會設置要點 2018.doc', type: 'doc', size: '45 KB', driveId: '12ImnxnmK_vGwbPeaPam1ni3MgBj_rJE9' },
                 ]
             },
             {
                 title: '制度深入研究',
                 files: [
-                    { name: '台灣高中課程諮詢教師制度之深入研究.html', type: 'html', size: '30 KB' },
-                    { name: '台灣高中課程諮詢教師制度之深入研究(網頁).pdf', type: 'pdf', size: '1.9 MB' },
-                    { name: '台灣高中課程諮詢教師深入研究_gemini.pdf', type: 'pdf', size: '302 KB' },
-                    { name: '台灣高中課程諮詢教師深入研究_gemini.docx', type: 'docx', size: '36 KB' },
+                    { name: '台灣高中課程諮詢教師制度之深入研究.html', type: 'html', size: '30 KB', driveId: '1VsD5AtaFvwFYT17P3ErjY7pTiJA1TwPK' },
+                    { name: '台灣高中課程諮詢教師制度之深入研究(網頁).pdf', type: 'pdf', size: '1.9 MB', driveId: '1YRjWpZIcySDyurcUtynFEQpMFS1MAp2l' },
+                    { name: '台灣高中課程諮詢教師深入研究_gemini.pdf', type: 'pdf', size: '302 KB', driveId: '1EhvyoIbq1bS9X6lIAUv6jUByfGFXeHmr' },
+                    { name: '台灣高中課程諮詢教師深入研究_gemini.docx', type: 'docx', size: '36 KB', driveId: '1AZvu2mllNK30LBAqYabc2wx7HGIJRi_X' },
                 ]
             }
         ]
@@ -1194,31 +1228,31 @@ const CATEGORIES = [
             {
                 title: '114 學年度手冊',
                 files: [
-                    { name: '普通班課諮手冊114學年.pdf', type: 'pdf', size: '1.1 MB' },
-                    { name: '資優班課諮手冊114學年.pdf', type: 'pdf', size: '1.1 MB' },
-                    { name: '體育班課諮手冊114學年.pdf', type: 'pdf', size: '1.2 MB' },
+                    { name: '普通班課諮手冊114學年.pdf', type: 'pdf', size: '1.1 MB', driveId: '12c0AoZRwRSnmaZZHnnO56TCOnlqN0AOy' },
+                    { name: '資優班課諮手冊114學年.pdf', type: 'pdf', size: '1.1 MB', driveId: '1povLiV6dd3mfdEhe40dRUHTIo32pDVN7' },
+                    { name: '體育班課諮手冊114學年.pdf', type: 'pdf', size: '1.2 MB', driveId: '1Tby7pnIV05Q5FFcH5UVK3nFyq9SYch9X' },
                 ]
             },
             {
                 title: '113 學年度手冊',
                 files: [
-                    { name: '普通班課諮手冊113學年.pdf', type: 'pdf', size: '9.6 MB' },
-                    { name: '資優班課諮手冊113學年.pdf', type: 'pdf', size: '12.4 MB' },
-                    { name: '體育班課諮手冊113學年.pdf', type: 'pdf', size: '12 MB' },
+                    { name: '普通班課諮手冊113學年.pdf', type: 'pdf', size: '9.6 MB', driveId: '1R2-Tvg_tNtt5oAADR_gAopavDa6zEg-u' },
+                    { name: '資優班課諮手冊113學年.pdf', type: 'pdf', size: '12.4 MB', driveId: '1oOQJvdP-Auj6CoH0FogE7D8_wvilVpl2' },
+                    { name: '體育班課諮手冊113學年.pdf', type: 'pdf', size: '12 MB', driveId: '1PVAx3WvcRfLutuT0cm34YkEZ5-ge716h' },
                 ]
             },
             {
                 title: '書面版（無年度版）',
                 files: [
-                    { name: '普通班課諮手冊.pdf', type: 'pdf', size: '6.1 MB' },
-                    { name: '資優班課諮手冊.pdf', type: 'pdf', size: '7.1 MB' },
-                    { name: '體育班課諮手冊.pdf', type: 'pdf', size: '7.8 MB' },
+                    { name: '普通班課諮手冊.pdf', type: 'pdf', size: '6.1 MB', driveId: '1oIaIHFXBcRSFfWuLF5VkNXHRCLn02Uhd' },
+                    { name: '資優班課諮手冊.pdf', type: 'pdf', size: '7.1 MB', driveId: '1jXUezYz6mSQL_hj5pCcPFKgK3U2_2peu' },
+                    { name: '體育班課諮手冊.pdf', type: 'pdf', size: '7.8 MB', driveId: '1cYC_8HzSJxqP_R62FnQ_-42QRXpJGhZ2' },
                 ]
             },
             {
                 title: '多元入學手冊',
                 files: [
-                    { name: '115學年度多元入學手冊-定稿版.pdf', type: 'pdf', size: '13.6 MB' },
+                    { name: '115學年度多元入學手冊-定稿版.pdf', type: 'pdf', size: '13.6 MB', driveId: '1S60E4AtANsYhDDEeiVk59FS6bMf9cGhQ' },
                 ]
             }
         ]
@@ -1234,19 +1268,19 @@ const CATEGORIES = [
             {
                 title: '課程學習成果呈現指南',
                 files: [
-                    { name: '學習歷程-課程學習成果呈現指南-互動版.pdf', type: 'pdf', size: '54 MB' },
-                    { name: '學習歷程-課程學習成果呈現指南-導讀公版簡報.pdf', type: 'pdf', size: '5.8 MB' },
-                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單.pdf', type: 'pdf', size: '233 KB' },
-                    { name: '1學習歷程檔案解讀與分析_gemini.pdf', type: 'pdf', size: '218 KB' },
-                    { name: '2學習歷程-課程學習成果呈現指南（互動版）_ChatGPT.pdf', type: 'pdf', size: '210 KB' },
+                    { name: '學習歷程-課程學習成果呈現指南-互動版.pdf', type: 'pdf', size: '54 MB', driveId: '1O_JEZoyJD1JyACsQv-Z4w1hKxNaJ8PJo' },
+                    { name: '學習歷程-課程學習成果呈現指南-導讀公版簡報.pdf', type: 'pdf', size: '5.8 MB', driveId: '1-9AcVB_O5cKPfOLKLVvOXq8Ue-QzvD0E' },
+                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單.pdf', type: 'pdf', size: '233 KB', driveId: '1fZag7byr8ntKOgNS9Y5ivN9_i6W2k2oL' },
+                    { name: '1學習歷程檔案解讀與分析_gemini.pdf', type: 'pdf', size: '218 KB', driveId: '1UKxAkCA4alHfehKfjGhKJc9pCMKEi0jQ' },
+                    { name: '2學習歷程-課程學習成果呈現指南（互動版）_ChatGPT.pdf', type: 'pdf', size: '210 KB', driveId: '1jXFMvk6rdMJbhWMAralS_zeHiOJiP9Eu' },
                 ]
             },
             {
                 title: '大學入學申請第二階段準備指南',
                 files: [
-                    { name: '學習歷程-大學入學申請第二階段準備指南-互動版0314.pdf', type: 'pdf', size: '35.4 MB' },
-                    { name: '學習歷程-大學入學申請第二階段準備指南深入研究_Gemini.pdf', type: 'pdf', size: '537 KB' },
-                    { name: '學習歷程-大學入學申請第二階段準備指南深入研究_Gemini.docx', type: 'docx', size: '28 KB' },
+                    { name: '學習歷程-大學入學申請第二階段準備指南-互動版0314.pdf', type: 'pdf', size: '35.4 MB', driveId: '13Y4vu-pYBjCyEWo8qkl5ZU_4r6fQuDL4' },
+                    { name: '學習歷程-大學入學申請第二階段準備指南深入研究_Gemini.pdf', type: 'pdf', size: '537 KB', driveId: '1xHJ3ZpsyV9dR2eXw3HTSzZzi9aEkONmN' },
+                    { name: '學習歷程-大學入學申請第二階段準備指南深入研究_Gemini.docx', type: 'docx', size: '28 KB', driveId: '1zPiQSXUwuyaK9PD1qg56Q09iuCgeLQLy' },
                 ]
             }
         ]
@@ -1262,68 +1296,68 @@ const CATEGORIES = [
             {
                 title: '上學期第一次：學習歷程檔案導讀',
                 files: [
-                    { name: '高一學習歷程檔案：課程學習成果呈現指南教學教案.pdf', type: 'pdf', size: '360 KB' },
-                    { name: '高一學習歷程檔案：課程學習成果呈現指南教學教案.docx', type: 'docx', size: '2.9 MB' },
-                    { name: '高一學習歷程檔案：課程學習成果呈現指南教學教案(網頁).html', type: 'html', size: '39 KB' },
-                    { name: '11410925高一團體課程諮詢活動流程.pdf', type: 'pdf', size: '190 KB' },
-                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單(學生版).pdf', type: 'pdf', size: '131 KB' },
-                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單(教師版).pdf', type: 'pdf', size: '165 KB' },
-                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單(解答).pdf', type: 'pdf', size: '148 KB' },
-                    { name: '學習歷程檔案簡介.pptx', type: 'pptx', size: '8.3 MB' },
-                    { name: '學習歷程檔案簡介.pdf', type: 'pdf', size: '1.4 MB' },
-                    { name: '學習歷程懶人包.pdf', type: 'pdf', size: '3.3 MB' },
-                    { name: '課程成果指南＿LM簡報.pdf', type: 'pdf', size: '1.8 MB' },
-                    { name: '大學教授想看什麼？拆解學習歷程「三重二不」與成果加值五要素.mp3', type: 'mp3', size: '5.5 MB' },
+                    { name: '高一學習歷程檔案：課程學習成果呈現指南教學教案.pdf', type: 'pdf', size: '360 KB', driveId: '17VhdOJgVIh5zljd9K4UXbzfoFccKDbT0' },
+                    { name: '高一學習歷程檔案：課程學習成果呈現指南教學教案.docx', type: 'docx', size: '2.9 MB', driveId: '16stdgtl80j7ZPEhBd9lKgX8KykgTLygH' },
+                    { name: '高一學習歷程檔案：課程學習成果呈現指南教學教案(網頁).html', type: 'html', size: '39 KB', driveId: '1B0c22W8KvUZ8ZVwtM6p_Og_gvxYjoDjl' },
+                    { name: '11410925高一團體課程諮詢活動流程.pdf', type: 'pdf', size: '190 KB', driveId: '1JPNl9ZEKLCliqqALAhef-jAT_40cr2pI' },
+                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單(學生版).pdf', type: 'pdf', size: '131 KB', driveId: '1WtJAMM3lJ99QDAePKvzdDoSBH6UVrOkG' },
+                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單(教師版).pdf', type: 'pdf', size: '165 KB', driveId: '1trmvC6tRVQgJ5xC1XOiBMuNgpx4H9QjX' },
+                    { name: '1141高一課程諮詢 《學習歷程檔案手冊》導讀學習單(解答).pdf', type: 'pdf', size: '148 KB', driveId: '11O9Q2rqyCu03JfoeE7MmFtt65mBBCojP' },
+                    { name: '學習歷程檔案簡介.pptx', type: 'pptx', size: '8.3 MB', driveId: '1wlmBGUiMo6zugJiKf8lHunYgDhVYfRFY' },
+                    { name: '學習歷程檔案簡介.pdf', type: 'pdf', size: '1.4 MB', driveId: '18N2Uvc4GOSsiAFUbeu3XuoIC9sw2kDqc' },
+                    { name: '學習歷程懶人包.pdf', type: 'pdf', size: '3.3 MB', driveId: '1z90tF0ps-HWVgpDVJIyq-VNxEoVI_etR' },
+                    { name: '課程成果指南＿LM簡報.pdf', type: 'pdf', size: '1.8 MB', driveId: '1Rsc2V6cq15iR1MdRTf7ATM5RLCku6XtE' },
+                    { name: '大學教授想看什麼？拆解學習歷程「三重二不」與成果加值五要素.mp3', type: 'mp3', size: '5.5 MB', driveId: '1KD4EiptjgqxVVleMAED6kZYJQpio-Aob' },
                 ]
             },
             {
                 title: '上學期第二次：課程地圖與專題選課',
                 files: [
-                    { name: '高一課程地圖與專題選課教學教案.pdf', type: 'pdf', size: '255 KB' },
-                    { name: '高一課程地圖與專題選課教學教案.docx', type: 'docx', size: '2.7 MB' },
-                    { name: '高一課程地圖與專題選課教學教案（網頁）.html', type: 'html', size: '23 KB' },
+                    { name: '高一課程地圖與專題選課教學教案.pdf', type: 'pdf', size: '255 KB', driveId: '12G4fxRfvz8szEmVasAMhhvNmK-498cJ8' },
+                    { name: '高一課程地圖與專題選課教學教案.docx', type: 'docx', size: '2.7 MB', driveId: '1y8UAcrn9f2yWaodwOKGv4vhB7PCSzGVB' },
+                    { name: '高一課程地圖與專題選課教學教案（網頁）.html', type: 'html', size: '23 KB', driveId: '1hwOTSMkwQt2b6aV67xkKrheiCfAMFAoN' },
                 ]
             },
             {
                 title: '下學期：選組選課說明（不分班別共用）',
                 files: [
-                    { name: '114-2 高一團體課諮-選組選課說明.pptx', type: 'pptx', size: '4.2 MB' },
-                    { name: '114-2 高一團體課諮-選組選課說明.pdf', type: 'pdf', size: '2.3 MB' },
-                    { name: '高一下-團體課程諮詢學習單-2025（學生版）.pdf', type: 'pdf', size: '303 KB' },
-                    { name: '高一下-團體課程諮詢學習單-2025（教師版）.pdf', type: 'pdf', size: '349 KB' },
-                    { name: '115高一升高二選課調查表0421.pdf', type: 'pdf', size: '181 KB' },
-                    { name: '麗山高中選組選課AI LM 簡報.pdf', type: 'pdf', size: '2.2 MB' },
-                    { name: '麗山高二選組選課LM簡報.pdf', type: 'pdf', size: '1.4 MB' },
-                    { name: '生涯設計_麗山選課全攻略＿LM簡報.pdf', type: 'pdf', size: '2.4 MB' },
-                    { name: '選擇你的路：高中生選組全攻略.mp4', type: 'mp4', size: '45.6 MB' },
-                    { name: '選組策略與數A數B.m4a', type: 'm4a', size: '37.2 MB' },
-                    { name: '麗山高中升高二選組選課分析.pdf', type: 'pdf', size: '321 KB' },
-                    { name: '麗山高中高一升高二選組選課策略全攻略.pdf', type: 'pdf', size: '482 KB' },
+                    { name: '114-2 高一團體課諮-選組選課說明.pptx', type: 'pptx', size: '4.2 MB', driveId: '1_fnEwDVzeYwwdzlSO0tpcscUsRQsd9v4' },
+                    { name: '114-2 高一團體課諮-選組選課說明.pdf', type: 'pdf', size: '2.3 MB', driveId: '16R9M_EQa415HlMOKoD3vSrAx5OBmJ0Ci' },
+                    { name: '高一下-團體課程諮詢學習單-2025（學生版）.pdf', type: 'pdf', size: '303 KB', driveId: '1lwmHQEVop6llfReBAjp8_RnHE1K6qWfQ' },
+                    { name: '高一下-團體課程諮詢學習單-2025（教師版）.pdf', type: 'pdf', size: '349 KB', driveId: '1NEvymgZBwKMosbnoSji9mu6uJu-AED2W' },
+                    { name: '115高一升高二選課調查表0421.pdf', type: 'pdf', size: '181 KB', driveId: '1xkimGX9dyflo1yLdlMJ7RC3_lJcplu3O' },
+                    { name: '麗山高中選組選課AI LM 簡報.pdf', type: 'pdf', size: '2.2 MB', driveId: '1pGTy5t7CazTJloepU-l9VYFAL_A3vuNO' },
+                    { name: '麗山高二選組選課LM簡報.pdf', type: 'pdf', size: '1.4 MB', driveId: '1NMAXYOzrTdp_ghIYlRke9FqWaJdLk2oO' },
+                    { name: '生涯設計_麗山選課全攻略＿LM簡報.pdf', type: 'pdf', size: '2.4 MB', driveId: '1fZiX3zHjZFPQ0T6FKBJh010WJN2iv1l8' },
+                    { name: '選擇你的路：高中生選組全攻略.mp4', type: 'mp4', size: '45.6 MB', driveId: '1XJhsNeU_H3jYVqHBk2pLDwn2HdiCwUYH' },
+                    { name: '選組策略與數A數B.m4a', type: 'm4a', size: '37.2 MB', driveId: '1qL-j_nc_6NY-MRCI1zvk0gkTtQhQMei3' },
+                    { name: '麗山高中升高二選組選課分析.pdf', type: 'pdf', size: '321 KB', driveId: '1O7LOU_JxrFBe2qivpYDUNHKKKMOKYLcX' },
+                    { name: '麗山高中高一升高二選組選課策略全攻略.pdf', type: 'pdf', size: '482 KB', driveId: '1q8UOZV1znZENK-wSEX3-fsAf21qs8Tlg' },
                 ]
             },
             {
                 title: '下學期：普通班選課指南',
                 files: [
-                    { name: '麗山高中升高二選課指南＿普通班.pdf', type: 'pdf', size: '199 KB' },
-                    { name: '麗山高中升高二選課指南＿普通班.docx', type: 'docx', size: '2.5 MB' },
-                    { name: '麗山高中升高二選課指南＿普通班 ＿簡報.pdf', type: 'pdf', size: '2.7 MB' },
+                    { name: '麗山高中升高二選課指南＿普通班.pdf', type: 'pdf', size: '199 KB', driveId: '1NraAMIIoVUBO3ECB3hLouCAlBBWwEDFe' },
+                    { name: '麗山高中升高二選課指南＿普通班.docx', type: 'docx', size: '2.5 MB', driveId: '1LkqL0-HafHEQ3Xt7YcDtUvUPQeCMX3-v' },
+                    { name: '麗山高中升高二選課指南＿普通班 ＿簡報.pdf', type: 'pdf', size: '2.7 MB', driveId: '1mbeUq5yUvjU523qTV3TvJyd-uwV-qeyv' },
                 ]
             },
             {
                 title: '下學期：資優班選課指南',
                 files: [
-                    { name: '麗山高中升高二選課指南＿資優班.pdf', type: 'pdf', size: '267 KB' },
-                    { name: '麗山高中升高二選課指南＿資優班.docx', type: 'docx', size: '3 MB' },
-                    { name: '麗山高中升高二選課指南＿資優班 ＿簡報.pdf', type: 'pdf', size: '1.8 MB' },
-                    { name: '資優班選組選課.pdf', type: 'pdf', size: '364 KB' },
+                    { name: '麗山高中升高二選課指南＿資優班.pdf', type: 'pdf', size: '267 KB', driveId: '1VymG5ke7ymTd0BjdUsaKo1OlsVKvHLw0' },
+                    { name: '麗山高中升高二選課指南＿資優班.docx', type: 'docx', size: '3 MB', driveId: '1uATRz8ZHhKSyOnmPxYoSW4iT_z3VG8EO' },
+                    { name: '麗山高中升高二選課指南＿資優班 ＿簡報.pdf', type: 'pdf', size: '1.8 MB', driveId: '1sxJZkoR9bCioTFH8KiBKldCxHwGgUWlA' },
+                    { name: '資優班選組選課.pdf', type: 'pdf', size: '364 KB', driveId: '1TcE5Qo-8v4XnyakiUHzTfPT-KQz9Np_j' },
                 ]
             },
             {
                 title: '下學期：體育班選課指南',
                 files: [
-                    { name: '麗山高中升高二選課指南＿體育班.pdf', type: 'pdf', size: '197 KB' },
-                    { name: '麗山高中升高二選課指南＿體育班.docx', type: 'docx', size: '2.5 MB' },
-                    { name: '麗山高中升高二選課指南＿體育班 ＿簡報.pdf', type: 'pdf', size: '3.2 MB' },
+                    { name: '麗山高中升高二選課指南＿體育班.pdf', type: 'pdf', size: '197 KB', driveId: '1Gwjx338CKf4VHkw3eG8iEzeAdYoUQyZJ' },
+                    { name: '麗山高中升高二選課指南＿體育班.docx', type: 'docx', size: '2.5 MB', driveId: '1Fgf8RBAmiilQQYAGH4tBvRTyTA9airR5' },
+                    { name: '麗山高中升高二選課指南＿體育班 ＿簡報.pdf', type: 'pdf', size: '3.2 MB', driveId: '1enjPtkGRjSToKyukJfeWoJU8bGIc8Lce' },
                 ]
             }
         ]
@@ -1339,50 +1373,50 @@ const CATEGORIES = [
             {
                 title: '上學期：多元表現深度解析',
                 files: [
-                    { name: '高二學習歷程檔案：多元表現深度解析 教學教案.pdf', type: 'pdf', size: '443 KB' },
-                    { name: '高二學習歷程檔案：多元表現深度解析 教學教案.docx', type: 'docx', size: '3.4 MB' },
-                    { name: '高二學習歷程檔案：多元表現深度解析 教學教案（網頁）.html', type: 'html', size: '26 KB' },
-                    { name: '高二團體課諮之多元表現.pptx', type: 'pptx', size: '36.8 MB' },
-                    { name: '高二團體課諮之多元表現.pdf', type: 'pdf', size: '5.4 MB' },
-                    { name: '11410926高二團體課程諮詢活動流程.pdf', type: 'pdf', size: '233 KB' },
-                    { name: '(最新)高二學習歷程檔案之多元表現學習單2025.9.19版(學生版).pdf', type: 'pdf', size: '194 KB' },
-                    { name: '(最新)高二學習歷程檔案之多元表現學習單2025.9.19版(教師版).pdf', type: 'pdf', size: '312 KB' },
-                    { name: '(最新)高二學習歷程檔案之多元表現學習單2025.9.19版(解答).pdf', type: 'pdf', size: '162 KB' },
-                    { name: '多元表現升學完全攻略_LM簡報.pdf', type: 'pdf', size: '1.7 MB' },
-                    { name: '高二生必懂的學習歷程「多元表現」全攻略（學生公告板）.pdf', type: 'pdf', size: '224 KB' },
-                    { name: '破解多元表現八選四！高二必看學習歷程「雙十限制」與88%必備的自主學習策略大公開.mp3', type: 'mp3', size: '4.6 MB' },
+                    { name: '高二學習歷程檔案：多元表現深度解析 教學教案.pdf', type: 'pdf', size: '443 KB', driveId: '1Q1ptQ5x7TlRMH1kkrPfj3BmVmMVLgt5z' },
+                    { name: '高二學習歷程檔案：多元表現深度解析 教學教案.docx', type: 'docx', size: '3.4 MB', driveId: '1QMsoOEbL0QXjP2Lu2Vb9HiTAS4tmRFdu' },
+                    { name: '高二學習歷程檔案：多元表現深度解析 教學教案（網頁）.html', type: 'html', size: '26 KB', driveId: '1niM7BgaohRDMQz8IkxfOWa3MyIoF3Fy6' },
+                    { name: '高二團體課諮之多元表現.pptx', type: 'pptx', size: '36.8 MB', driveId: '1_D4n6GhqqhbFsAXDjW8AbHch7ALf3mzD' },
+                    { name: '高二團體課諮之多元表現.pdf', type: 'pdf', size: '5.4 MB', driveId: '1-Mso-Yo5giAUly2WXnlLhqnKwkRVBU4u' },
+                    { name: '11410926高二團體課程諮詢活動流程.pdf', type: 'pdf', size: '233 KB', driveId: '12jYd1IS5NUdRSLWjx6teRTn8QfsC6gb1' },
+                    { name: '(最新)高二學習歷程檔案之多元表現學習單2025.9.19版(學生版).pdf', type: 'pdf', size: '194 KB', driveId: '1zrblmUdh81_98Mm4E-n4B1_puzLR-0pa' },
+                    { name: '(最新)高二學習歷程檔案之多元表現學習單2025.9.19版(教師版).pdf', type: 'pdf', size: '312 KB', driveId: '1F_8__BZ1ULVYaYA-F8nneVKyGVjAcx-1' },
+                    { name: '(最新)高二學習歷程檔案之多元表現學習單2025.9.19版(解答).pdf', type: 'pdf', size: '162 KB', driveId: '1hiw2DKUG5TTlM8bMkb7DBJ4fTiX9GHZT' },
+                    { name: '多元表現升學完全攻略_LM簡報.pdf', type: 'pdf', size: '1.7 MB', driveId: '1SnOHIM5oLhv2_HMw5DjXZ_dB5FhhJALk' },
+                    { name: '高二生必懂的學習歷程「多元表現」全攻略（學生公告板）.pdf', type: 'pdf', size: '224 KB', driveId: '1GWnIQFHN51GbnIWEpfL_YiLunrs0Y8Or' },
+                    { name: '破解多元表現八選四！高二必看學習歷程「雙十限制」與88%必備的自主學習策略大公開.mp3', type: 'mp3', size: '4.6 MB', driveId: '11OIlaqND01bGaUiPnogXfwW9jZZIBVTX' },
                 ]
             },
             {
                 title: '下學期：課程學習成果諮詢',
                 files: [
-                    { name: '高二下課程學習成果諮詢簡報.pptx', type: 'pptx', size: '17 MB' },
-                    { name: '高二下課程學習成果諮詢簡報.pdf', type: 'pdf', size: '6.5 MB' },
-                    { name: '學習歷程檔案精進手冊是非題(學生版)_115.pdf', type: 'pdf', size: '173 KB' },
-                    { name: '學習歷程檔案精進手冊是非題(教師版).pdf', type: 'pdf', size: '275 KB' },
-                    { name: '學習歷程檔案精進手冊是非題(教師版)_簡報.pdf', type: 'pdf', size: '1.4 MB' },
-                    { name: '臺北大學高中學習歷程檔案精進手冊.pdf', type: 'pdf', size: '4.6 MB' },
-                    { name: '臺北大學高中學習歷程檔案精進手冊_LM簡報.pdf', type: 'pdf', size: '2.6 MB' },
-                    { name: '高二下課程學習成果＿LM簡報1.pdf', type: 'pdf', size: '2.4 MB' },
-                    { name: '高二下課程學習成果＿LM簡報2.pdf', type: 'pdf', size: '2.3 MB' },
+                    { name: '高二下課程學習成果諮詢簡報.pptx', type: 'pptx', size: '17 MB', driveId: '1Jr5QoszTglv-rH0Romc3Pd7vJOVnHrBX' },
+                    { name: '高二下課程學習成果諮詢簡報.pdf', type: 'pdf', size: '6.5 MB', driveId: '17F8m41_OwnlBEidxyZ9eQJysz6LhrWGu' },
+                    { name: '學習歷程檔案精進手冊是非題(學生版)_115.pdf', type: 'pdf', size: '173 KB', driveId: '1Ng32iaoItI8J0C6jacS3ws_mVfvgH8l4' },
+                    { name: '學習歷程檔案精進手冊是非題(教師版).pdf', type: 'pdf', size: '275 KB', driveId: '1FWkXTa9NobV6t_BAcOE5IbKrIAWGeV1b' },
+                    { name: '學習歷程檔案精進手冊是非題(教師版)_簡報.pdf', type: 'pdf', size: '1.4 MB', driveId: '1VWY6g6_XA96ji-bGGLGdcjuTDm9kR2-9' },
+                    { name: '臺北大學高中學習歷程檔案精進手冊.pdf', type: 'pdf', size: '4.6 MB', driveId: '1gVvfloB2UtUMEziDlyrBibyOKXcuHkCQ' },
+                    { name: '臺北大學高中學習歷程檔案精進手冊_LM簡報.pdf', type: 'pdf', size: '2.6 MB', driveId: '1SnbQcmSVhSpGHClR5_kQw5_JQRPoRvqS' },
+                    { name: '高二下課程學習成果＿LM簡報1.pdf', type: 'pdf', size: '2.4 MB', driveId: '1nMkPB2pnw3gaI5WSyjZu2OmHUcKwk4U3' },
+                    { name: '高二下課程學習成果＿LM簡報2.pdf', type: 'pdf', size: '2.3 MB', driveId: '19mE7xp4wTYqXJARyl14SHqbRXOmggYPY' },
                 ]
             },
             {
                 title: '二升三選組選課',
                 files: [
-                    { name: '115高二升高三選課說明0421.pdf', type: 'pdf', size: '' },
-                    { name: '115高二升高三選課說明0421.docx', type: 'docx', size: '' },
-                    { name: '115高二升高三選課調查表0421.pdf', type: 'pdf', size: '' },
-                    { name: '115高二升高三選課調查表0421.doc', type: 'doc', size: '' },
-                    { name: '麗山高三選組選課LM簡報.pdf', type: 'pdf', size: '1.8 MB' },
+                    { name: '115高二升高三選課說明0421.pdf', type: 'pdf', size: '', driveId: '1_tT30HcwD5QBc-7WjhiGUqjxbMu5MzU5' },
+                    { name: '115高二升高三選課說明0421.docx', type: 'docx', size: '', driveId: '1cngsb3CxgLzfebillMJKmhCm1N8z32pn' },
+                    { name: '115高二升高三選課調查表0421.pdf', type: 'pdf', size: '', driveId: '1izXiA1RFzAPNw-Cl-kQlGSxmBwtqBnLC' },
+                    { name: '115高二升高三選課調查表0421.doc', type: 'doc', size: '', driveId: '1uXdVpMNIsVYSBST-ZPcoEo_g6MohaN6w' },
+                    { name: '麗山高三選組選課LM簡報.pdf', type: 'pdf', size: '1.8 MB', driveId: '15D89sNx0CJ8EUUqqODJQuBSBIv8-o80J' },
                 ]
             },
             {
                 title: '歷屆參考資料',
                 files: [
-                    { name: '一起重返18歲 學習歷程檔案分享.pdf', type: 'pdf', size: '7.5 MB' },
-                    { name: '最後課程學習成果可當範例.pdf', type: 'pdf', size: '16.9 MB' },
-                    { name: '美化版3.7高二學校日課程諮詢說明簡報.pptx', type: 'pptx', size: '9.7 MB' },
+                    { name: '一起重返18歲 學習歷程檔案分享.pdf', type: 'pdf', size: '7.5 MB', driveId: '1PsQa3crfgZYKkJimItirt5b9_se-G5E3' },
+                    { name: '最後課程學習成果可當範例.pdf', type: 'pdf', size: '16.9 MB', driveId: '10lAdF7bjyDCngolArtJvr07wfn-ASma_' },
+                    { name: '美化版3.7高二學校日課程諮詢說明簡報.pptx', type: 'pptx', size: '9.7 MB', driveId: '1s66cpyVe9j_II1W_nSGB1mRyWzdPaLWC' },
                 ]
             }
         ]
@@ -1398,27 +1432,27 @@ const CATEGORIES = [
             {
                 title: '上學期：認識申請入學簡章',
                 files: [
-                    { name: '1141高三團體課諮之申請入學簡章（簡報）.pptx', type: 'pptx', size: '15.6 MB' },
-                    { name: '1141高三團體課諮之申請入學簡章（簡報）.pdf', type: 'pdf', size: '5.9 MB' },
-                    { name: '1141128高三團體課程諮詢活動流程.pdf', type: 'pdf', size: '181 KB' },
-                    { name: '1141128高三團體課程諮詢活動流程.docx', type: 'docx', size: '3.3 MB' },
-                    { name: '1141高三認識申請入學簡章學習單_chao.pdf', type: 'pdf', size: '285 KB' },
-                    { name: '1141高三認識申請入學簡章學習單＿光電科學與工程學範例.pdf', type: 'pdf', size: '390 KB' },
-                    { name: '115年申請入學簡章（簡報）教師講稿.pdf', type: 'pdf', size: '200 KB' },
-                    { name: '115年申請入學簡章（簡報）教師講稿.docx', type: 'docx', size: '6 MB' },
-                    { name: '大學申請入學深度解析簡報_LM.pdf', type: 'pdf', size: '14.8 MB' },
-                    { name: '大學申請入學落點分析表.pdf', type: 'pdf', size: '211 KB' },
-                    { name: '大學申請入學落點分析表.docx', type: 'docx', size: '37 KB' },
-                    { name: '115學年度大學入學採計科目公告.pdf', type: 'pdf', size: '199 KB' },
+                    { name: '1141高三團體課諮之申請入學簡章（簡報）.pptx', type: 'pptx', size: '15.6 MB', driveId: '1UYpNJkmNb_BRHOGX5h--k947WZ-DsizD' },
+                    { name: '1141高三團體課諮之申請入學簡章（簡報）.pdf', type: 'pdf', size: '5.9 MB', driveId: '1tdZAKaT6HuHq88j5ZLe1FqCKtBrJlhFl' },
+                    { name: '1141128高三團體課程諮詢活動流程.pdf', type: 'pdf', size: '181 KB', driveId: '17zl6Y_YfS2DrtmF6gqnwhLDRR3dPNJmU' },
+                    { name: '1141128高三團體課程諮詢活動流程.docx', type: 'docx', size: '3.3 MB', driveId: '1A67QwlpiMUOzK3WZVMuBPBsFhd6_S_v4' },
+                    { name: '1141高三認識申請入學簡章學習單_chao.pdf', type: 'pdf', size: '285 KB', driveId: '1El4aor0ApBj4aglzFnCdkF8QJ-6GF3fV' },
+                    { name: '1141高三認識申請入學簡章學習單＿光電科學與工程學範例.pdf', type: 'pdf', size: '390 KB', driveId: '16_tf5o-fcAlPUhp9Bycldwaycayrz0mz' },
+                    { name: '115年申請入學簡章（簡報）教師講稿.pdf', type: 'pdf', size: '200 KB', driveId: '1Dj9hwRtfY4rM-embozHO_6MWobNNXcg5' },
+                    { name: '115年申請入學簡章（簡報）教師講稿.docx', type: 'docx', size: '6 MB', driveId: '1UK9i1uFMKoAZp1yIqOs07AYQStAbV_o5' },
+                    { name: '大學申請入學深度解析簡報_LM.pdf', type: 'pdf', size: '14.8 MB', driveId: '11Nt0vhbcv1r988UBH07HOTDE5BEh9ih_' },
+                    { name: '大學申請入學落點分析表.pdf', type: 'pdf', size: '211 KB', driveId: '1SH-lcZtXaYlmPEskhM406nL2uRFWiSig' },
+                    { name: '大學申請入學落點分析表.docx', type: 'docx', size: '37 KB', driveId: '1yrPDWjTQ-8qsAfMThWSy-zbdegcgFBYv' },
+                    { name: '115學年度大學入學採計科目公告.pdf', type: 'pdf', size: '199 KB', driveId: '1LGI3cBj1tPXfEcjCioIH1mU8SKftTmbG' },
                 ]
             },
             {
                 title: '下學期：書審資料準備與志願選填',
                 files: [
-                    { name: '115高三選填志願輔導與諮詢簡報.pptx', type: 'pptx', size: '47.6 MB' },
-                    { name: '115高三選填志願輔導與諮詢簡報.pdf', type: 'pdf', size: '7.4 MB' },
-                    { name: '2026.115個人申請可運用資源說明.pdf', type: 'pdf', size: '9.6 MB' },
-                    { name: '115年個人申請志願填寫系統.html', type: 'html', size: '75 KB' },
+                    { name: '115高三選填志願輔導與諮詢簡報.pptx', type: 'pptx', size: '47.6 MB', driveId: '16QdVlGT0qroJCT2VqrbzPeiR3emDODss' },
+                    { name: '115高三選填志願輔導與諮詢簡報.pdf', type: 'pdf', size: '7.4 MB', driveId: '1B-NqwyT8J5hzl6FET78TI908Zj0EIpny' },
+                    { name: '2026.115個人申請可運用資源說明.pdf', type: 'pdf', size: '9.6 MB', driveId: '16bXUlcnGlAkkNnExGoCRUDAR-khHt1H1' },
+                    { name: '115年個人申請志願填寫系統.html', type: 'html', size: '75 KB', driveId: '1UieL4vbyYLff-Ph9UeBW14WBZ2ikeZEN' },
                 ]
             }
         ]
@@ -1434,29 +1468,29 @@ const CATEGORIES = [
             {
                 title: '制度研究報告',
                 files: [
-                    { name: '台灣高中課程諮詢教師研究_gemini.pdf', type: 'pdf', size: '314 KB' },
-                    { name: '台灣高中課程諮詢教師研究_gemini.docx', type: 'docx', size: '2.8 MB' },
-                    { name: '台灣高中課程諮詢教師研究_gemini（網頁）.html', type: 'html', size: '46 KB' },
-                    { name: '臺灣高中課程諮詢教師研究報告＿ChatGPT.pdf', type: 'pdf', size: '585 KB' },
-                    { name: '臺灣高中課程諮詢教師研究報告＿ChatGPT.docx', type: 'docx', size: '28 KB' },
-                    { name: '臺灣高中課程諮詢教師研究報告（網頁）.html', type: 'html', size: '19 KB' },
-                    { name: '臺灣高中課程諮詢教師研究報告＿網頁介紹.pdf', type: 'pdf', size: '4.8 MB' },
+                    { name: '台灣高中課程諮詢教師研究_gemini.pdf', type: 'pdf', size: '314 KB', driveId: '1imUg2sgRDEBYYLLhBHo3Il8_lGZJ5GSS' },
+                    { name: '台灣高中課程諮詢教師研究_gemini.docx', type: 'docx', size: '2.8 MB', driveId: '1QQ0pyA2_fGVaGcBgaAXdukILr7QdvqBN' },
+                    { name: '台灣高中課程諮詢教師研究_gemini（網頁）.html', type: 'html', size: '46 KB', driveId: '1XNZ3rRwq7T9o3GgaAPI5AX9742IUnq7a' },
+                    { name: '臺灣高中課程諮詢教師研究報告＿ChatGPT.pdf', type: 'pdf', size: '585 KB', driveId: '1w41lnWcLG7zfVLiVDaQejpN4RW00mKL0' },
+                    { name: '臺灣高中課程諮詢教師研究報告＿ChatGPT.docx', type: 'docx', size: '28 KB', driveId: '1kxJfivuHG2pnLw5ZuYljIMFVMkEpRyNT' },
+                    { name: '臺灣高中課程諮詢教師研究報告（網頁）.html', type: 'html', size: '19 KB', driveId: '1z7Cz8xWYw6FnHKoZZzBWHTPczllYeZCw' },
+                    { name: '臺灣高中課程諮詢教師研究報告＿網頁介紹.pdf', type: 'pdf', size: '4.8 MB', driveId: '14Ypb_q_kCSGPIZLWwD1OOU-3syIwMZuf' },
                 ]
             },
             {
                 title: '任務與職責',
                 files: [
-                    { name: '台灣高中課程諮詢召集人的工作 任務 職責.pdf', type: 'pdf', size: '790 KB' },
-                    { name: '課諮師任務與職責＿LM簡報.pdf', type: 'pdf', size: '2.7 MB' },
-                    { name: '課諮師制度分析_LM筆記簡報.pdf', type: 'pdf', size: '3.2 MB' },
-                    { name: '課諮師制度分析_LM簡報.pdf', type: 'pdf', size: '1.9 MB' },
+                    { name: '台灣高中課程諮詢召集人的工作 任務 職責.pdf', type: 'pdf', size: '790 KB', driveId: '11kIJy_Cd0SjA8XxnZl1wT8kjd08EMK07' },
+                    { name: '課諮師任務與職責＿LM簡報.pdf', type: 'pdf', size: '2.7 MB', driveId: '10baESPGrI7t_W7EIHDCDeGYlDnpJXk29' },
+                    { name: '課諮師制度分析_LM筆記簡報.pdf', type: 'pdf', size: '3.2 MB', driveId: '1Ah8f17dR9XD0VYDOvAycLMWqvDNNO3BQ' },
+                    { name: '課諮師制度分析_LM簡報.pdf', type: 'pdf', size: '1.9 MB', driveId: '1QtFFG3NCqONgnW-BDV5Se0gA1L2dr0So' },
                 ]
             },
             {
                 title: 'Podcast 音檔',
                 files: [
-                    { name: '108課綱新角色：高中課程諮詢教師，理想與現實的「鐵三角」挑戰！.mp3', type: 'mp3', size: '3.8 MB' },
-                    { name: '【108課綱升級版】高中課諮師怎麼幫你「策展」學習路徑？打造會說故事的學習歷程檔案！.mp3', type: 'mp3', size: '3.4 MB' },
+                    { name: '108課綱新角色：高中課程諮詢教師，理想與現實的「鐵三角」挑戰！.mp3', type: 'mp3', size: '3.8 MB', driveId: '14i6-Uu3TvH0atd4i5v4gXEuoTFQf28d6' },
+                    { name: '【108課綱升級版】高中課諮師怎麼幫你「策展」學習路徑？打造會說故事的學習歷程檔案！.mp3', type: 'mp3', size: '3.4 MB', driveId: '1HFq8v2hBvcFNtvrVI1X9xVFXCiepSPKs' },
                 ]
             }
         ]
@@ -1472,25 +1506,25 @@ const CATEGORIES = [
             {
                 title: '臺北市課程諮詢工作手冊',
                 files: [
-                    { name: '臺北市課程諮詢工作手冊.pdf', type: 'pdf', size: '4.1 MB' },
-                    { name: '台北市課程諮詢手冊導讀簡報.pdf', type: 'pdf', size: '8.5 MB' },
+                    { name: '臺北市課程諮詢工作手冊.pdf', type: 'pdf', size: '4.1 MB', driveId: '11qivJwOYJOgJD0zwvtfwziukhPC0uGvo' },
+                    { name: '台北市課程諮詢手冊導讀簡報.pdf', type: 'pdf', size: '8.5 MB', driveId: '1K2p9bcw7ujUkW7wAYj0EhzYzYfM5vd6e' },
                 ]
             },
             {
                 title: '課程諮詢地圖',
                 files: [
-                    { name: '課程諮詢地圖.png', type: 'png', size: '5 MB' },
-                    { name: '課程諮詢地圖2.png', type: 'png', size: '4.3 MB' },
-                    { name: '課程諮詢地圖_LM簡報.pdf', type: 'pdf', size: '2.9 MB' },
+                    { name: '課程諮詢地圖.png', type: 'png', size: '5 MB', driveId: '1Wo_DER7EKGFQW2qG8xwAdBP1N-JDsyql' },
+                    { name: '課程諮詢地圖2.png', type: 'png', size: '4.3 MB', driveId: '1BN4mgOaPVVlddyn-LMJZ0Q7USIdALdyi' },
+                    { name: '課程諮詢地圖_LM簡報.pdf', type: 'pdf', size: '2.9 MB', driveId: '163DJ1bvsCaMnMIHP4lEuCcgE7ug66KPi' },
                 ]
             },
             {
                 title: 'AI 輔助資料',
                 files: [
-                    { name: 'Course_Consulting_Navigator_Blueprint.pdf', type: 'pdf', size: '16.6 MB' },
-                    { name: '高中課諮領航藍圖.pdf', type: 'pdf', size: '14.7 MB' },
-                    { name: '108課綱選課生存攻略.m4a', type: 'm4a', size: '41.7 MB' },
-                    { name: '你的高中藍圖：用課程諮詢導航你的未來.mp4', type: 'mp4', size: '30.8 MB' },
+                    { name: 'Course_Consulting_Navigator_Blueprint.pdf', type: 'pdf', size: '16.6 MB', driveId: '1wlsT9Vigc83JjU3Of35n1vOsUa-P1TYb' },
+                    { name: '高中課諮領航藍圖.pdf', type: 'pdf', size: '14.7 MB', driveId: '1_GgQVYD7WBDYGrhRNd9VphBVIUlUikQ_' },
+                    { name: '108課綱選課生存攻略.m4a', type: 'm4a', size: '41.7 MB', driveId: '1sCrbtSl0H99tBEb1xGruuNNnygnt3z_k' },
+                    { name: '你的高中藍圖：用課程諮詢導航你的未來.mp4', type: 'mp4', size: '30.8 MB', driveId: '1cQIMApXd1F9-fgWBTVz7Aau1vPcMk_Rv' },
                 ]
             }
         ]
@@ -1543,13 +1577,14 @@ function renderCategories() {
                     </div>
                     <div class="file-list${si === 0 ? ' open' : ''}">
                         ${sub.files.map(f => `
-                            <div class="file-item">
+                            <a class="file-item" ${f.driveId ? 'href="https://drive.google.com/file/d/' + f.driveId + '/view?usp=sharing" target="_blank" rel="noopener"' : ''} title="${f.driveId ? '點擊在 Google Drive 中開啟' : f.name}">
                                 <div class="file-type-icon ${f.type}">${f.type}</div>
                                 <div class="file-info">
                                     <div class="file-name">${f.name}</div>
-                                    ${f.size ? `<div class="file-meta">${f.size}</div>` : ''}
+                                    <div class="file-meta">${f.size ? f.size + ' · ' : ''}${f.driveId ? '<span class="drive-link">☁️ Google Drive</span>' : ''}</div>
                                 </div>
-                            </div>
+                                ${f.driveId ? '<div class="file-open-icon">↗</div>' : ''}
+                            </a>
                         `).join('')}
                     </div>
                 </div>
@@ -1654,7 +1689,8 @@ function performSearch(query) {
                         catId: cat.id,
                         fileName: f.name,
                         fileType: f.type,
-                        subsection: sub.title
+                        subsection: sub.title,
+                        driveId: f.driveId || ''
                     });
                 }
             });
@@ -1671,7 +1707,7 @@ function renderSearchResults(results, query) {
         searchResultsBody.innerHTML = results.map(r => {
             const highlighted = highlightMatch(r.fileName, query);
             return `
-                <div class="search-result-item" onclick="closeSearch(); scrollToCategory('${r.catId}'); togglePanel('${r.catId}');">
+                <div class="search-result-item" onclick="closeSearch(); scrollToCategory('${r.catId}'); togglePanel('${r.catId}');" data-drive-id="${r.driveId || ''}">
                     <div class="file-type-icon ${r.fileType}" style="width:30px;height:30px;font-size:0.6rem;">${r.fileType}</div>
                     <div style="flex:1;min-width:0;">
                         <div class="search-result-name">${highlighted}</div>

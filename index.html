@@ -1185,11 +1185,11 @@ body::after {
     .quick-links { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
     .categories-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .hero { padding: var(--space-3xl) var(--space-md); min-height: 460px; }
     .hero h1 { font-size: 2rem; }
     .stats-row { gap: var(--space-lg); }
@@ -1773,14 +1773,14 @@ function getTotalFiles(cat) {
     return cat.subsections.reduce((sum, s) => sum + s.files.length, 0);
 }
 
+/* ── 卡片九宮格渲染（無內嵌 panel） ── */
 function renderCategories() {
     const grid = document.getElementById('categoriesGrid');
     let html = '';
-
     CATEGORIES.forEach(cat => {
         const fileCount = getTotalFiles(cat);
         html += `
-        <div class="category-card" data-color="${cat.color}" data-id="${cat.id}" id="${cat.id}" onclick="togglePanel('${cat.id}')">
+        <div class="category-card" data-color="${cat.color}" data-id="${cat.id}" id="${cat.id}" onclick="openModal('${cat.id}')">
             <div class="card-body">
                 <div class="card-icon-row">
                     <div class="card-icon">${cat.icon}</div>
@@ -1791,105 +1791,78 @@ function renderCategories() {
                 <div class="card-tags">${cat.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
             </div>
             <div class="card-expand-hint">
-                <span>點擊展開檔案清單</span>
-                <span class="arrow">▼</span>
-            </div>
-        </div>
-        <div class="file-panel" id="panel-${cat.id}">
-            <div class="file-panel-inner">
-                <div class="panel-header">
-                    <h3>${cat.icon} ${cat.title}</h3>
-                    <button class="panel-close" onclick="event.stopPropagation(); closePanel('${cat.id}')">✕</button>
-                </div>
-                <div class="panel-desc">
-                    <p>${cat.desc}</p>
-                </div>
-                ${cat.subsections.map((sub, si) => `
-                    <div class="file-subsection">
-                        <div class="subsection-header${si === 0 ? ' open' : ''}" onclick="event.stopPropagation(); toggleSubsection(this)">
-                            <span class="chevron">▶</span>
-                            <h4>${sub.title}</h4>
-                            <span class="subsection-badge">${sub.files.length} 個</span>
-                        </div>
-                        <div class="file-list${si === 0 ? ' open' : ''}">
-                            ${sub.files.map(f => `
-                                <a class="file-item" ${f.driveId ? 'href="https://drive.google.com/file/d/' + f.driveId + '/view?usp=sharing" target="_blank" rel="noopener"' : ''} title="${f.driveId ? '點擊在 Google Drive 中開啟' : f.name}">
-                                    <div class="file-type-icon ${f.type}">${f.type}</div>
-                                    <div class="file-info">
-                                        <div class="file-name">${f.name}</div>
-                                        <div class="file-meta">${f.size ? f.size + ' · ' : ''}${f.driveId ? '<span class="drive-link">☁️ Google Drive</span>' : ''}</div>
-                                    </div>
-                                    ${f.driveId ? '<div class="file-open-icon">↗</div>' : ''}
-                                </a>
-                            `).join('')}
-                        </div>
-                    </div>
-                `).join('')}
+                <span>查看檔案清單</span>
+                <span class="arrow">→</span>
             </div>
         </div>`;
     });
-
     grid.innerHTML = html;
 }
 
-/* ──────────────────────────────────────────────
-   INTERACTION HANDLERS
-   ────────────────────────────────────────────── */
-let activePanel = null;
-
-function togglePanel(catId) {
-    const card = document.getElementById(catId);
-    const panel = document.getElementById('panel-' + catId);
-
-    if (activePanel && activePanel !== catId) {
-        const prevCard = document.getElementById(activePanel);
-        const prevPanel = document.getElementById('panel-' + activePanel);
-        prevCard.classList.remove('expanded');
-        prevPanel.classList.remove('show');
-    }
-
-    if (activePanel === catId) {
-        card.classList.remove('expanded');
-        panel.classList.remove('show');
-        activePanel = null;
-    } else {
-        card.classList.add('expanded');
-        panel.classList.add('show');
-        activePanel = catId;
-        // Scroll into view with offset
-        setTimeout(() => {
-            panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 100);
-    }
+/* ── Modal 開關 ── */
+function openModal(catId) {
+    const cat = CATEGORIES.find(c => c.id === catId);
+    if (!cat) return;
+    const box = document.getElementById('modalBox');
+    const content = document.getElementById('modalContent');
+    box.setAttribute('data-color', cat.color);
+    content.innerHTML = buildModalContent(cat);
+    document.getElementById('fileModal').classList.add('show');
+    document.body.style.overflow = 'hidden';
 }
 
-function closePanel(catId) {
-    const card = document.getElementById(catId);
-    const panel = document.getElementById('panel-' + catId);
-    card.classList.remove('expanded');
-    panel.classList.remove('show');
-    activePanel = null;
+function closeModal() {
+    document.getElementById('fileModal').classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+function buildModalContent(cat) {
+    return `
+        <div class="panel-header">
+            <h3>${cat.icon} ${cat.title}</h3>
+            <button class="panel-close" onclick="closeModal()" aria-label="關閉">✕</button>
+        </div>
+        <div class="panel-desc"><p>${cat.desc}</p></div>
+        <div class="modal-body">
+        ${cat.subsections.map((sub, si) => `
+            <div class="file-subsection">
+                <div class="subsection-header${si === 0 ? ' open' : ''}" onclick="toggleSubsection(this)">
+                    <span class="chevron">▶</span>
+                    <h4>${sub.title}</h4>
+                    <span class="subsection-badge">${sub.files.length} 個</span>
+                </div>
+                <div class="file-list${si === 0 ? ' open' : ''}">
+                    ${sub.files.map(f => `
+                        <a class="file-item" ${f.driveId ? `href="https://drive.google.com/file/d/${f.driveId}/view?usp=sharing" target="_blank" rel="noopener"` : ''} title="${f.driveId ? '點擊在 Google Drive 中開啟' : f.name}">
+                            <div class="file-type-icon ${f.type}">${f.type}</div>
+                            <div class="file-info">
+                                <div class="file-name">${f.name}</div>
+                                <div class="file-meta">${f.size ? f.size + ' · ' : ''}${f.driveId ? '<span class="drive-link">☁️ Google Drive</span>' : ''}</div>
+                            </div>
+                            ${f.driveId ? '<div class="file-open-icon">↗</div>' : ''}
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('')}
+        </div>`;
 }
 
 function toggleSubsection(header) {
     header.classList.toggle('open');
-    const fileList = header.nextElementSibling;
-    fileList.classList.toggle('open');
+    header.nextElementSibling.classList.toggle('open');
 }
 
 function scrollToCategory(catId) {
     const el = document.getElementById(catId);
     if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        // Flash effect
         el.style.boxShadow = '0 0 0 3px var(--c-indigo), var(--shadow-lg)';
         setTimeout(() => { el.style.boxShadow = ''; }, 1500);
     }
 }
 
-/* ──────────────────────────────────────────────
-   SEARCH
-   ────────────────────────────────────────────── */
+/* ── 搜尋 ── */
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 const searchResultsBody = document.getElementById('searchResultsBody');
@@ -1898,42 +1871,26 @@ let searchTimeout = null;
 searchInput.addEventListener('input', function() {
     clearTimeout(searchTimeout);
     const query = this.value.trim();
-    if (query.length < 2) {
-        closeSearch();
-        return;
-    }
+    if (query.length < 2) { closeSearch(); return; }
     searchTimeout = setTimeout(() => performSearch(query), 200);
 });
 
 searchInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        this.value = '';
-        closeSearch();
-    }
+    if (e.key === 'Escape') { this.value = ''; closeSearch(); }
 });
 
 function performSearch(query) {
     const results = [];
-    const lowerQuery = query.toLowerCase();
-
+    const lq = query.toLowerCase();
     CATEGORIES.forEach(cat => {
         cat.subsections.forEach(sub => {
             sub.files.forEach(f => {
-                if (f.name.toLowerCase().includes(lowerQuery)) {
-                    results.push({
-                        catTitle: cat.title,
-                        catIcon: cat.icon,
-                        catId: cat.id,
-                        fileName: f.name,
-                        fileType: f.type,
-                        subsection: sub.title,
-                        driveId: f.driveId || ''
-                    });
+                if (f.name.toLowerCase().includes(lq)) {
+                    results.push({ catTitle: cat.title, catIcon: cat.icon, catId: cat.id, fileName: f.name, fileType: f.type, subsection: sub.title, driveId: f.driveId || '' });
                 }
             });
         });
     });
-
     renderSearchResults(results, query);
 }
 
@@ -1944,14 +1901,13 @@ function renderSearchResults(results, query) {
         searchResultsBody.innerHTML = results.map(r => {
             const highlighted = highlightMatch(r.fileName, query);
             return `
-                <div class="search-result-item" onclick="closeSearch(); scrollToCategory('${r.catId}'); togglePanel('${r.catId}');" data-drive-id="${r.driveId || ''}">
+                <div class="search-result-item" onclick="closeSearch(); openModal('${r.catId}');" data-drive-id="${r.driveId || ''}">
                     <div class="file-type-icon ${r.fileType}" style="width:30px;height:30px;font-size:0.6rem;">${r.fileType}</div>
                     <div style="flex:1;min-width:0;">
                         <div class="search-result-name">${highlighted}</div>
-                        <div style="font-size:0.75rem;color:var(--c-gray-400);margin-top:2px;">${r.catIcon} ${r.catTitle} › ${r.subsection}</div>
+                        <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px;">${r.catIcon} ${r.catTitle} › ${r.subsection}</div>
                     </div>
-                </div>
-            `;
+                </div>`;
         }).join('');
     }
     searchResults.classList.add('show');
@@ -1962,50 +1918,24 @@ function highlightMatch(text, query) {
     return escapeHtml(text).replace(regex, '<mark>$1</mark>');
 }
 
-function closeSearch() {
-    searchResults.classList.remove('show');
-}
+function closeSearch() { searchResults.classList.remove('show'); }
 
-// Close search on click outside
-searchResults.addEventListener('click', function(e) {
-    if (e.target === this) closeSearch();
-});
+searchResults.addEventListener('click', function(e) { if (e.target === this) closeSearch(); });
 
-// Keyboard shortcut: Cmd+K or Ctrl+K to focus search
 document.addEventListener('keydown', function(e) {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        searchInput.focus();
-    }
-    if (e.key === 'Escape') {
-        closeSearch();
-    }
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); searchInput.focus(); }
+    if (e.key === 'Escape') { closeSearch(); closeModal(); }
 });
 
-/* ──────────────────────────────────────────────
-   STICKY NAV SHADOW
-   ────────────────────────────────────────────── */
+/* ── Sticky nav ── */
 const stickyNav = document.getElementById('stickyNav');
-window.addEventListener('scroll', () => {
-    stickyNav.classList.toggle('scrolled', window.scrollY > 100);
-});
+window.addEventListener('scroll', () => { stickyNav.classList.toggle('scrolled', window.scrollY > 100); });
 
-/* ──────────────────────────────────────────────
-   UTILITIES
-   ────────────────────────────────────────────── */
-function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-}
+/* ── Utilities ── */
+function escapeHtml(str) { const d = document.createElement('div'); d.textContent = str; return d.innerHTML; }
+function escapeRegExp(str) { return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
-function escapeRegExp(str) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-/* ──────────────────────────────────────────────
-   INIT
-   ────────────────────────────────────────────── */
+/* ── Init ── */
 document.addEventListener('DOMContentLoaded', renderCategories);
 </script>
 

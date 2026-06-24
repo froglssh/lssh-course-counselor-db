@@ -1226,7 +1226,6 @@ body::after {
     .category-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
     .file-panel.show { display: block; }
 }
-</style>
 
 /* ── Drive Link Styles ── */
 .file-item[href] {
@@ -1236,30 +1235,14 @@ body::after {
 }
 
 .file-item[href]:hover {
-    background: rgba(59,130,246,0.06);
+    background: rgba(67, 97, 238, 0.06);
     border-left: 3px solid var(--c-indigo);
-    padding-left: 11px;
+    padding-left: 13px;
 }
 
 .drive-link {
     color: var(--c-indigo);
-    font-weight: 500;
-}
-
-.file-open-icon {
-    font-size: 1rem;
-    color: var(--c-gray-300);
-    flex-shrink: 0;
-    transition: all 0.2s ease;
-}
-
-.file-item[href]:hover .file-open-icon {
-    color: var(--c-indigo);
-    transform: translate(2px, -2px);
-}
-
-.file-item[href]:hover .file-name {
-    color: var(--c-indigo);
+    font-weight: 600;
 }
     </style>
 </head>

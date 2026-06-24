@@ -533,9 +533,9 @@ body::after {
 .main {
     position: relative;
     z-index: 5;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: var(--space-2xl) var(--space-xl);
+    padding: var(--space-2xl) var(--space-lg);
 }
 
 /* ── Section Headers ── */
@@ -567,9 +567,9 @@ body::after {
    ═══════════════════════════════════════════════ */
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: var(--space-lg);
-    margin-bottom: var(--space-3xl);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
 }
 
 .category-card {
@@ -641,7 +641,7 @@ body::after {
 .category-card[data-color="navy"]::before    { background: linear-gradient(90deg, var(--c-navy-mid), var(--c-indigo)); }
 
 .card-body {
-    padding: var(--space-lg);
+    padding: var(--space-md) var(--space-md) var(--space-sm);
 }
 
 .card-icon-row {
@@ -652,12 +652,12 @@ body::after {
 }
 
 .card-icon {
-    width: 48px; height: 48px;
+    width: 40px; height: 40px;
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .category-card[data-color="indigo"] .card-icon  { background: rgba(67, 97, 238, 0.08); }
@@ -681,23 +681,22 @@ body::after {
 
 .card-title {
     font-family: var(--font-display);
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     font-weight: 800;
     color: var(--c-navy-mid);
-    margin-bottom: var(--space-sm);
-    line-height: 1.4;
+    margin-bottom: 4px;
+    line-height: 1.35;
 }
 
 .card-desc {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     color: #64748B;
-    line-height: 1.7;
-    margin-bottom: var(--space-md);
+    line-height: 1.6;
+    margin-bottom: var(--space-sm);
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 4.85em; /* Limit height and clamp to avoid layout jumps */
 }
 
 .card-tags {
@@ -720,10 +719,10 @@ body::after {
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
-    padding: 12px;
+    padding: 8px;
     background: rgba(241, 245, 249, 0.6);
     border-top: 1px solid var(--c-card-border);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: #64748B;
     font-weight: 600;
     transition: all 0.25s ease;
@@ -1189,6 +1188,10 @@ body::after {
     .quick-links { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 }
 
+@media (max-width: 900px) {
+    .categories-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); }
+}
+
 @media (max-width: 768px) {
     .hero { padding: var(--space-3xl) var(--space-md); min-height: 460px; }
     .hero h1 { font-size: 2rem; }
@@ -1201,8 +1204,8 @@ body::after {
     .search-box input { width: 160px; }
     .search-box input:focus { width: 220px; }
 
-    .main { padding: var(--space-xl) var(--space-md); }
-    .categories-grid { grid-template-columns: 1fr; }
+    .main { padding: var(--space-xl) var(--space-sm); }
+    .categories-grid { grid-template-columns: 1fr; gap: var(--space-sm); }
 
     .panel-header { padding: var(--space-md); }
     .panel-desc { padding: var(--space-md); }

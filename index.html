@@ -31,8 +31,8 @@
     --c-orange:     #F97316;
 
     --c-bg-light:   #F3F7FA;
-    --c-card-bg:    rgba(255, 255, 255, 0.8);
-    --c-card-border: rgba(226, 232, 240, 0.8);
+    --c-card-bg:    #ffffff;
+    --c-card-border: #e2e8f0;
 
     /* ── Typography ── */
     --font-display: 'Outfit', 'Noto Sans TC', sans-serif;
@@ -401,18 +401,16 @@ body::after {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(243, 247, 250, 0.75);
-    backdrop-filter: blur(20px) saturate(1.8);
-    -webkit-backdrop-filter: blur(20px) saturate(1.8);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
     padding: 0 var(--space-xl);
     transition: all 0.3s var(--ease-out);
 }
 
 .sticky-nav.scrolled {
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 10px 30px rgba(15, 26, 46, 0.05);
-    border-bottom-color: rgba(226, 232, 240, 0.8);
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(15, 26, 46, 0.04);
+    border-bottom-color: #e2e8f0;
 }
 
 .nav-inner {
@@ -575,8 +573,6 @@ body::after {
 .category-card {
     position: relative;
     background: var(--c-card-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius-lg);
     border: 1px solid var(--c-card-border);
     overflow: hidden;
@@ -601,8 +597,9 @@ body::after {
 }
 
 .category-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: #cbd5e1;
 }
 
 /* Glowing Aura Shadows on Hover */
@@ -641,7 +638,7 @@ body::after {
 .category-card[data-color="navy"]::before    { background: linear-gradient(90deg, var(--c-navy-mid), var(--c-indigo)); }
 
 .card-body {
-    padding: var(--space-md) var(--space-md) var(--space-sm);
+    padding: var(--space-lg) var(--space-lg) var(--space-md);
 }
 
 .card-icon-row {
@@ -652,12 +649,12 @@ body::after {
 }
 
 .card-icon {
-    width: 40px; height: 40px;
+    width: 48px; height: 48px;
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .category-card[data-color="indigo"] .card-icon  { background: rgba(67, 97, 238, 0.08); }
@@ -681,20 +678,20 @@ body::after {
 
 .card-title {
     font-family: var(--font-display);
-    font-size: 1.05rem;
+    font-size: 1.18rem;
     font-weight: 800;
     color: var(--c-navy-mid);
-    margin-bottom: 4px;
-    line-height: 1.35;
+    margin-bottom: var(--space-sm);
+    line-height: 1.4;
 }
 
 .card-desc {
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     color: #64748B;
-    line-height: 1.6;
-    margin-bottom: var(--space-sm);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -719,10 +716,10 @@ body::after {
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
-    padding: 8px;
-    background: rgba(241, 245, 249, 0.6);
-    border-top: 1px solid var(--c-card-border);
-    font-size: 0.78rem;
+    padding: 12px;
+    background: #f8fafc;
+    border-top: 1px solid #f1f5f9;
+    font-size: 0.82rem;
     color: #64748B;
     font-weight: 600;
     transition: all 0.25s ease;
